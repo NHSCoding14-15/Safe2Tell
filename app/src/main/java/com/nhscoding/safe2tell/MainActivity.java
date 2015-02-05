@@ -1,3 +1,5 @@
+package com.nhscoding.safe2tell;
+
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -8,6 +10,7 @@ import android.widget.ListView;
 
 import com.nhscoding.safe2tell.AboutClass;
 import com.nhscoding.safe2tell.LearnClass;
+import com.nhscoding.safe2tell.NavigationDrawerFragment;
 import com.nhscoding.safe2tell.R;
 import com.nhscoding.safe2tell.SettingsClass;
 import com.nhscoding.safe2tell.StoriesClass;
@@ -21,7 +24,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Find our drawer view
-        dlDrawer = (FragmentNavigationDrawer) findViewById(R.id.drawer_layout);
+        dlDrawer = (NavigationDrawerFragment) findViewById(R.id.drawer_layout);
         // Setup drawer view
         dlDrawer.setupDrawerConfiguration((ListView) findViewById(R.id.lvDrawer),
                 R.layout.drawer_nav_item, R.id.flContent);
