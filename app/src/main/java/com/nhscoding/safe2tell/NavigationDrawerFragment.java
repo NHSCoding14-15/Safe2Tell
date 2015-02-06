@@ -1,4 +1,4 @@
-package com.nhscoding.safe2tell.;
+package com.nhscoding.safe2tell;
 
 import java.util.ArrayList;
 
@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.nhscoding.safe2tell.R;
 
 public class FragmentNavigationDrawer extends DrawerLayout {
     private ActionBarDrawerToggle drawerToggle;

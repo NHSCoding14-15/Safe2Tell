@@ -1,3 +1,4 @@
+package com.nhscoding.safe2tell;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -7,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.nhscoding.safe2tell.AboutClass;
+import com.nhscoding.safe2tell.FragmentNavigationDrawer;
 import com.nhscoding.safe2tell.LearnClass;
 import com.nhscoding.safe2tell.R;
 import com.nhscoding.safe2tell.SettingsClass;
@@ -14,7 +16,7 @@ import com.nhscoding.safe2tell.StoriesClass;
 import com.nhscoding.safe2tell.SubmitClass;
 
 public class MainActivity extends FragmentActivity {
-    private NavigationDrawerFragment dlDrawer;
+    private FragmentNavigationDrawer dlDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class MainActivity extends FragmentActivity {
         dlDrawer.setupDrawerConfiguration((ListView) findViewById(R.id.lvDrawer),
                 R.layout.drawer_nav_item, R.id.flContent);
         // Add nav items
-        dlDrawer.addNavItem("First", "First Fragment", SubmitClass.class);
+        dlDrawer.addNavItem("Submit", "Submit Class", SubmitClass.class);
         dlDrawer.addNavItem("Second", "Second Fragment", StoriesClass.class);
         dlDrawer.addNavItem("Third", "Third Fragment", LearnClass.class);
         dlDrawer.addNavItem("Fouth", "Fourth Fragment", AboutClass.class);

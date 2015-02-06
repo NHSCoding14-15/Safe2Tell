@@ -16,5 +16,10 @@
     <color name="lrn_back">#FFBB33</color>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="description">Description of Event</string>
+    <string name="date">Date</string>
+    <string name="submit_button">Submit</string>
 
 </resources>
