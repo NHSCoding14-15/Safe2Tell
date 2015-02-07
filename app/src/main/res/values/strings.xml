@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Safe 2 Tell</string>
+    <string name="app_name">Safe2Tell</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
@@ -9,12 +9,12 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
-    <color name="sett_back">#FF4444</color>
-    <color name="abt_back">#33B5E5</color>
-    <color name="stor_back">#AA66CC</color>
-    <color name="sub_back">#99CC00</color>
-    <color name="lrn_back">#FFBB33</color>
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="problems">
+        <item>Suicide</item>
+        <item>Drug Abuse</item>
+        <item>Domestic Violence</item>
+    </string-array>
 
 </resources>
