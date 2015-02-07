@@ -1,6 +1,7 @@
 package com.nhscoding.safe2tell;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -27,10 +28,7 @@ import java.lang.reflect.Array;
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, NEWS.OnFragmentInteractionListener {
 
-    String[] drawerArray = new String[]{
-            "News",
-            "Problem"
-    };
+//    String[] drawerArray = getResources().getStringArray(R.array.drawerFields);
 
     int place;
     /**
@@ -66,38 +64,45 @@ public class MainActivity extends ActionBarActivity
 
         switch (position) {
             case 0:
-                objFragment = new NEWS();
+                objFragment = new ABOUT_US();
+                mTitle = "About Us";
                 place = 0;
                 break;
 
             case 1:
                 place = 1;
-                objFragment = new PROBLEM();
-                SpinnerAdapter adapter =
-                        ArrayAdapter.createFromResource(getApplicationContext(), R.array.problems,
-                                android.R.layout.simple_spinner_dropdown_item);
-
-                ActionBar.OnNavigationListener callback = new ActionBar.OnNavigationListener() {
-
-                    String[] items = getResources().getStringArray(R.array.problems);
-
-                    @Override
-                    public boolean onNavigationItemSelected(int i, long l) {
-                        Log.i("Navigation Item Selected", items[i]);
-                        return true;
-                    }
-                };
-
-                ActionBar actionBar = getSupportActionBar();
-                int a = actionBar.NAVIGATION_MODE_LIST;
-                actionBar.setNavigationMode(a);
-                actionBar.setDisplayShowTitleEnabled(false);
-                actionBar.setListNavigationCallbacks(adapter, callback);
-                mTitle = "Problem";
+                mTitle = "Stories";
+                objFragment = new STORIES();
                 break;
+
+            case 2:
+                place = 2;
+                mTitle = "Learn";
+                objFragment = new LEARN();
+                break;
+
+            case 3:
+                place = 3;
+                mTitle = "Quiz";
+                objFragment = new QUIZ();
+                break;
+
+            case 4:
+                place = 4;
+                mTitle = "Problem";
+                objFragment = new PROBLEM();
+                break;
+
+            case 5:
+                place = 5;
+                mTitle = "Submit A Tip";
+                Intent intent = new Intent(this, SUBMIT_TIP.class);
+                startActivity(intent);
+                return;
 
             default:
                 place = -1;
+                mTitle = "ERROR";
                 objFragment = new PlaceholderFragment();
                 break;
         }
@@ -109,12 +114,12 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void onSectionAttached(int number) {
-        String title = drawerArray[number - 1];
+        String title = getResources().getStringArray(R.array.drawerFields)[number - 1];
         mTitle = title;
     }
 
     public void restoreActionBar() {
-        if (place != 1) {
+        if (place != 4) {
             ActionBar actionBar = getSupportActionBar();
             actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
             actionBar.setDisplayShowTitleEnabled(true);
@@ -213,8 +218,7 @@ public class MainActivity extends ActionBarActivity
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
+            //((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
 
