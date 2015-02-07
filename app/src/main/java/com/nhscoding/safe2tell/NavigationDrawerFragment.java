@@ -20,29 +20,29 @@ import android.widget.ListView;
 
 import com.nhscoding.safe2tell.R;
 
-public class FragmentNavigationDrawer extends DrawerLayout {
+public class NavigationDrawerFragment extends DrawerLayout {
     private ActionBarDrawerToggle drawerToggle;
     private ListView lvDrawer;
     private ArrayAdapter<String> drawerAdapter;
     private ArrayList<FragmentNavItem> drawerNavItems;
     private int drawerContainerRes;
 
-    public FragmentNavigationDrawer(Context context, AttributeSet attrs, int defStyle) {
+    public NavigationDrawerFragment(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public FragmentNavigationDrawer(Context context, AttributeSet attrs) {
+    public NavigationDrawerFragment(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public FragmentNavigationDrawer(Context context) {
+    public NavigationDrawerFragment(Context context) {
         super(context);
     }
 
     // setupDrawerConfiguration((ListView) findViewById(R.id.lvDrawer), R.layout.drawer_list_item, R.id.flContent);
     public void setupDrawerConfiguration(ListView drawerListView, int drawerItemRes, int drawerContainerRes) {
         // Setup navigation items array
-        drawerNavItems = new ArrayList<FragmentNavigationDrawer.FragmentNavItem>();
+        drawerNavItems = new ArrayList<NavigationDrawerFragment.FragmentNavItem>();
         // Set the adapter for the list view
         drawerAdapter = new ArrayAdapter<String>(getActivity(), drawerItemRes,
                 new ArrayList<String>());
