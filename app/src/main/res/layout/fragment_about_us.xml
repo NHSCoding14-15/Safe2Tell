@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.nhscoding.safe2tell.ABOUT_US"
     android:background="@color/lrn_back"
@@ -18,10 +18,16 @@
         android:textSize="45dp"/>
 
     <TextView
-        android:layout_width="350dp"
-        android:layout_height="547dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/about"
         android:id="@+id/textView2"
-        android:layout_gravity="center" />
-</FrameLayout>
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:textSize="30dp"
+        android:gravity="center"/>
+
+
+</RelativeLayout>

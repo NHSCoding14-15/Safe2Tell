@@ -15,7 +15,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:inputType="textPersonName"
-        android:text="@string/first_name"
+        android:hint="@string/first_name"
         android:ems="0"
         android:id="@+id/first_name" />
     <EditText
@@ -26,7 +26,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:inputType="textPersonName"
-        android:text="@string/last_name"
+        android:hint="@string/last_name"
         android:ems="10"
         android:id="@+id/last_name" />
     <EditText
@@ -37,7 +37,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:inputType="textLongMessage"
-        android:text="@string/description"
+        android:hint="@string/description"
         android:ems="10"
         android:id="@+id/description" />
     <EditText
@@ -48,7 +48,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:inputType="date"
-        android:text="@string/date"
+        android:hint="@string/date"
         android:ems="10"
         android:id="@+id/date" />
 

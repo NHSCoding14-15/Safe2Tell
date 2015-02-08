@@ -41,6 +41,7 @@ Now, using Safe2Tell®, they only have to make a call to make a difference.  By 
         <item>Learn</item>
         <item>Quiz</item>
         <item>Problems</item>
+        <item>Tip</item>
     </string-array>
     <string-array name="problems">
         <item>Suicide</item>
