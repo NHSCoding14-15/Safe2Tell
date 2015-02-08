@@ -98,7 +98,7 @@ public class MainActivity extends ActionBarActivity
 
             case 5:
                 place = 5;
-                mTitle = "Submit A Tip";
+                mTitle = "Tip";
                 Intent intent = new Intent(this, SUBMIT_TIP.class);
                 startActivity(intent);
                 return;

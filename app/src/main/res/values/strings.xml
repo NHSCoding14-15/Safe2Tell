@@ -21,7 +21,19 @@
     <string name="description">Description of Event</string>
     <string name="date">Date</string>
     <string name="submit_button">Submit</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Dumb text</string>
+
+    <string name="about">Safe2Tell® provides YOUNG people a way to report any threatening behaviors or activities endangering themselves or someone they know, in a way that keeps them safe and anonymous.
+
+Safe2Tell® is a 501c3 not-for-profit organization based on the Colorado Prevention Initiative for School Safety with initial funding from The Colorado Trust.
+
+The program focuses on kids and the issues they face today.  This program was based on the Columbine Commission Report’s recommendation that students need a safe and anonymous way to keep lines of communication open.  They realized that tragedies could be prevented if young people had a way to tell someone what they knew without fearing retaliation.
+
+The anonymity of all Safe2Tell reports is protected by C.R.S. 07-197.  This means the reporting party remains UNKNOWN by Colorado state law, signed by Governor Bill Ritter on May 3, 2007.
+
+
+
+Now, using Safe2Tell®, they only have to make a call to make a difference.  By calling 1-877-542-7233 or submitting a tip through this web-site, young people can help anyone who is in trouble or prevent a tragedy.</string>
 
     <string-array name="drawerFields">
         <item>About Us</item>

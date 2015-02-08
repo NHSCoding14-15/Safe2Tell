@@ -1,9 +1,27 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.nhscoding.safe2tell.ABOUT_US">
+    android:layout_height="match_parent" tools:context="com.nhscoding.safe2tell.ABOUT_US"
+    android:background="@color/material_blue_grey_800"
+    >
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Who we are"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal|top"
+        android:gravity="center"
+        android:textSize="45dp"/>
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="547dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/about"
+        android:id="@+id/textView2"
+        android:layout_gravity="center" />
 </FrameLayout>
