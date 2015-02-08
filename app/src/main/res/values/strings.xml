@@ -9,11 +9,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
-    <color name="sett_back">#FF4444</color>
-    <color name="abt_back">#33B5E5</color>
+    <color name="lrn_back">#FF4444</color>
+    <color name="prob_back">#33B5E5</color>
     <color name="stor_back">#AA66CC</color>
-    <color name="sub_back">#99CC00</color>
-    <color name="lrn_back">#FFBB33</color>
+    <color name="quiz_back">#99CC00</color>
+    <color name="news_back">#FFBB33</color>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="first_name">First Name</string>
