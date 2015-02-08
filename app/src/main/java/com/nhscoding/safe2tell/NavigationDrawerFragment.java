@@ -29,10 +29,7 @@ import android.widget.Toast;
  */
 public class NavigationDrawerFragment extends Fragment {
 
-    String[] drawerArray = new String[] {
-            "News",
-            "Problem"
-    };
+    //String[] drawerArray = getResources().getStringArray(R.array.drawerFields);
 
     /**
      * Remember the position of the selected item.
@@ -107,7 +104,7 @@ public class NavigationDrawerFragment extends Fragment {
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                drawerArray));
+                getResources().getStringArray(R.array.drawerFields)));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }

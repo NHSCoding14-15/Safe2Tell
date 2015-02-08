@@ -23,11 +23,23 @@
     <string name="submit_button">Submit</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string-array name="drawerFields">
+        <item>About Us</item>
+        <item>Stories</item>
+        <item>Learn</item>
+        <item>Quiz</item>
+        <item>Problems</item>
+    </string-array>
     <string-array name="problems">
         <item>Suicide</item>
         <item>Drug Abuse</item>
         <item>Domestic Violence</item>
     </string-array>
 
+
+    <string name="title_activity_submit__tip">SUBMIT_TIP</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="test">test</string>
 
 </resources>

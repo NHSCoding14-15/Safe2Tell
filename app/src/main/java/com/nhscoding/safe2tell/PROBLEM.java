@@ -31,7 +31,7 @@ public class PROBLEM extends android.support.v4.app.Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootview = inflater.inflate(R.layout.fragment_news, container, false);
+        rootview = inflater.inflate(R.layout.fragment_problem, container, false);
         return rootview;
     }
 
@@ -54,8 +54,8 @@ public class PROBLEM extends android.support.v4.app.Fragment {
         mListener = null;
     }
 
-    public static NewsFragment newInstance() {
-        NewsFragment fragment = new NewsFragment();
+    public static PROBLEM newInstance() {
+        PROBLEM fragment = new PROBLEM();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;

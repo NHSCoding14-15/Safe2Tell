@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SUBMIT_TIP"
+            android:label="@string/title_activity_submit__tip"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nhscoding.safe2tell.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

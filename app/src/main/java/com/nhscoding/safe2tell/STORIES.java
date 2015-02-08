@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 /**
  * Created by davidkopala on 2/6/15.
  */
-public class NEWS extends Fragment {
+public class STORIES extends Fragment {
 
     View rootview;
 
@@ -19,7 +19,7 @@ public class NEWS extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootview = inflater.inflate(R.layout.fragment_news, container, false);
+        rootview = inflater.inflate(R.layout.fragment_stories, container, false);
         return rootview;
     }
 
@@ -40,8 +40,8 @@ public class NEWS extends Fragment {
         mListener = null;
     }
 
-    public static NEWS newInstance() {
-        NEWS fragment = new NEWS();
+    public static STORIES newInstance() {
+        STORIES fragment = new STORIES();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
