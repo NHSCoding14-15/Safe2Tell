@@ -36,8 +36,8 @@ The anonymity of all Safe2Tell reports is protected by C.R.S. 07-197.  This mean
 Now, using Safe2Tell®, they only have to make a call to make a difference.  By calling 1-877-542-7233 or submitting a tip through this web-site, young people can help anyone who is in trouble or prevent a tragedy.</string>
 
     <string-array name="drawerFields">
-        <item>About Us</item>
         <item>Stories</item>
+        <item>About Us</item>
         <item>Learn</item>
         <item>Quiz</item>
         <item>Problems</item>

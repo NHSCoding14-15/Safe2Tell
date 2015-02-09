@@ -68,16 +68,19 @@ public class MainActivity extends ActionBarActivity
 
         switch (position) {
             case 0:
-                objFragment = new ABOUT_US();
-                mTitle = "About Us";
                 place = 0;
-                break;
-
-            case 1:
-                place = 1;
                 mTitle = "Stories";
                 objFragment = new STORIES();
                 break;
+
+
+
+            case 1:
+                objFragment = new ABOUT_US();
+                mTitle = "About Us";
+                place = 1;
+                break;
+
 
             case 2:
                 place = 2;
