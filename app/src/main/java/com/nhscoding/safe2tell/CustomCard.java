@@ -18,7 +18,7 @@ public class CustomCard extends View {
                 0, 0);
 
         try {
-            mtext = a.getText(R.styleable.customCard_text, false);
+            mtest = a.getText(R.styleable.customCard_text, false);
 
         } finally {
             a.recycle();
