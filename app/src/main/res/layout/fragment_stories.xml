@@ -17,16 +17,21 @@
                 android:id="@+id/card_view"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="0dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                card_view:cardCornerRadius="8dp">
+                android:layout_marginTop="@dimen/card_margin_top"
+                android:layout_marginBottom="@dimen/card_margin_bottom"
+                android:layout_marginLeft="@dimen/card_margin_left"
+                android:layout_marginRight="@dimen/card_margin_right"
+                card_view:cardCornerRadius="@dimen/card_radius">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hello"
+                    android:layout_marginTop="@dimen/card_title_top"
+                    android:layout_marginBottom="@dimen/card_title_bottom"
+                    android:layout_marginLeft="@dimen/card_title_left"
+                    android:layout_marginRight="@dimen/card_title_right"
+                    android:text="@string/card1_title"
+                    android:textSize="@dimen/card_title_size"
                     android:gravity="top"
                     />
 
@@ -48,12 +53,24 @@
                 android:id="@+id/card_view2"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="0dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                card_view:cardCornerRadius="8dp"
+                android:layout_marginTop="@dimen/card_margin_top"
+                android:layout_marginBottom="@dimen/card_margin_bottom"
+                android:layout_marginLeft="@dimen/card_margin_left"
+                android:layout_marginRight="@dimen/card_margin_right"
+                card_view:cardCornerRadius="@dimen/card_radius"
                 android:layout_below="@id/card_view">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_title_top"
+                    android:layout_marginBottom="@dimen/card_title_bottom"
+                    android:layout_marginLeft="@dimen/card_title_left"
+                    android:layout_marginRight="@dimen/card_title_right"
+                    android:text="@string/card2_title"
+                    android:textSize="@dimen/card_title_size"
+                    android:gravity="top"
+                    />
 
                 <TextView
                     android:id="@+id/info_text2"
@@ -70,12 +87,24 @@
                 android:id="@+id/card_view3"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="0dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                card_view:cardCornerRadius="8dp"
+                android:layout_marginTop="@dimen/card_margin_top"
+                android:layout_marginBottom="@dimen/card_margin_bottom"
+                android:layout_marginLeft="@dimen/card_margin_left"
+                android:layout_marginRight="@dimen/card_margin_right"
+                card_view:cardCornerRadius="@dimen/card_radius"
                 android:layout_below="@id/card_view2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_title_top"
+                    android:layout_marginBottom="@dimen/card_title_bottom"
+                    android:layout_marginLeft="@dimen/card_title_left"
+                    android:layout_marginRight="@dimen/card_title_right"
+                    android:text="@string/card3_title"
+                    android:textSize="@dimen/card_title_size"
+                    android:gravity="top"
+                    />
 
                 <TextView
                     android:id="@+id/info_text3"

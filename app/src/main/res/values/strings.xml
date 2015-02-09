@@ -54,6 +54,10 @@ Now, using Safe2Tell®, they only have to make a call to make a difference.  By 
     <string name="hello_world">Hello world!</string>
 
     <string name="test">test</string>
+    <string name="card1_title">New Safe2Tell App to be released soon!</string>
+    <string name="card2_title">Fifteen Suicides prevented by Safe2Tell this year</string>
+    <string name="card3_title">Safe2Tell employs students at Northglenn High School to build mobile app</string>
+
 
 
 </resources>
