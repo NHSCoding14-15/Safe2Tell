@@ -14,7 +14,7 @@
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view"
+                android:id="@+id/card_view1"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="@dimen/card_margin_top"
@@ -33,19 +33,10 @@
                     android:text="@string/card1_title"
                     android:textSize="@dimen/card_title_size"
                     android:gravity="top"
+                    android:id="@+id/title1"
                     />
 
-                <TextView
-                    android:id="@+id/info_text"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="0dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Hello World"
-                    android:gravity="bottom"
-                    />
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -58,7 +49,7 @@
                 android:layout_marginLeft="@dimen/card_margin_left"
                 android:layout_marginRight="@dimen/card_margin_right"
                 card_view:cardCornerRadius="@dimen/card_radius"
-                android:layout_below="@id/card_view">
+                android:layout_below="@id/card_view1">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -114,6 +105,60 @@
                     android:layout_marginRight="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"/>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/card_margin_top"
+                android:layout_marginBottom="@dimen/card_margin_bottom"
+                android:layout_marginLeft="@dimen/card_margin_left"
+                android:layout_marginRight="@dimen/card_margin_right"
+                card_view:cardCornerRadius="@dimen/card_radius">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_title_top"
+                    android:layout_marginBottom="@dimen/card_title_bottom"
+                    android:layout_marginLeft="@dimen/card_title_left"
+                    android:layout_marginRight="@dimen/card_title_right"
+                    android:text="@string/card4_title"
+                    android:textSize="@dimen/card_title_size"
+                    android:gravity="top"
+                    android:id="@+id/title4"
+                    />
+
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/card_margin_top"
+                android:layout_marginBottom="@dimen/card_margin_bottom"
+                android:layout_marginLeft="@dimen/card_margin_left"
+                android:layout_marginRight="@dimen/card_margin_right"
+                card_view:cardCornerRadius="@dimen/card_radius">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_title_top"
+                    android:layout_marginBottom="@dimen/card_title_bottom"
+                    android:layout_marginLeft="@dimen/card_title_left"
+                    android:layout_marginRight="@dimen/card_title_right"
+                    android:text="@string/card5_title"
+                    android:textSize="@dimen/card_title_size"
+                    android:gravity="top"
+                    android:id="@+id/title5"
+                    />
+
+
             </android.support.v7.widget.CardView>
 
 
