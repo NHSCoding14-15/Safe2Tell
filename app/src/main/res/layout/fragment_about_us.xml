@@ -4,7 +4,7 @@
     android:background="@color/lrn_back"
     >
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: Scrollbar -->
 
 
     <TextView
@@ -27,7 +27,9 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:textSize="30dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:maxLines="60"
+        android:scrollbars="vertical"/>
 
 
 </RelativeLayout>

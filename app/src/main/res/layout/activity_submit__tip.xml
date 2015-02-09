@@ -50,7 +50,8 @@
         android:inputType="date"
         android:hint="@string/date"
         android:ems="10"
-        android:id="@+id/date" />
+        android:id="@+id/date"
+        />
 
     <Button
         android:layout_width="match_parent"

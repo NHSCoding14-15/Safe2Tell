@@ -50,9 +50,10 @@ Now, using Safe2Tell®, they only have to make a call to make a difference.  By 
     </string-array>
 
 
-    <string name="title_activity_submit__tip">SUBMIT_TIP</string>
+    <string name="title_activity_submit__tip">New Tip</string>
     <string name="hello_world">Hello world!</string>
 
     <string name="test">test</string>
+
 
 </resources>
