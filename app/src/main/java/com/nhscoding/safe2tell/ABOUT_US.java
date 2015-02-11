@@ -21,7 +21,6 @@ public class ABOUT_US extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_about_us, container, false);
-
         return rootview;
     }
 
@@ -53,5 +52,4 @@ public class ABOUT_US extends Fragment {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
-
 }
