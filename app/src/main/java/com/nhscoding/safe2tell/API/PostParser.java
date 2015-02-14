@@ -1,4 +1,4 @@
-package com.nhscoding.safe2tell;
+package com.nhscoding.safe2tell.API;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -63,7 +63,7 @@ public class PostParser extends AsyncTask<String, String, String>{
         HttpResponse response;
         String responseString = null;
         try {
-            response = httpclient.execute(new HttpGet("http://24.8.58.134/david/api/PostApi"));
+            response = httpclient.execute(new HttpGet("http://24.8.58.134/Safe2Tell/api/PostsAPI"));
             StatusLine statusLine = response.getStatusLine();
             if(statusLine.getStatusCode() == HttpStatus.SC_OK){
                 ByteArrayOutputStream out = new ByteArrayOutputStream();

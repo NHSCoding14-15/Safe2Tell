@@ -1,14 +1,14 @@
 package com.nhscoding.safe2tell;
 
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.nhscoding.safe2tell.API.PostParser;
 
 /**
  * Created by davidkopala on 2/6/15.

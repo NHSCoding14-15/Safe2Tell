@@ -1,4 +1,4 @@
-package com.nhscoding.safe2tell;
+package com.nhscoding.safe2tell.API;
 
 import java.util.Objects;
 

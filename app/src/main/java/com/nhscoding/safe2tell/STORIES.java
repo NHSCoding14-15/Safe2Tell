@@ -4,9 +4,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.nhscoding.safe2tell.API.ProblemParser;
 
 /**
  * Created by davidkopala on 2/6/15.
@@ -17,9 +20,14 @@ public class STORIES extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    ProblemParser parser;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_stories, container, false);
+        Log.d("Safe2Tell-STORIES", "Attempting To Start Problem Parser");
+        parser = new ProblemParser();
+        parser.execute();
         return rootview;
     }
 
