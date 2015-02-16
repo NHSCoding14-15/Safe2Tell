@@ -4,11 +4,15 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by davidkopala on 2/8/15.
  */
-public class CustomCard extends View {
+public class CustomCard {
+
+    public TextView mTextView;
+    public TextView mTitleView;
 
 //    public CustomCard(Context context, AttributeSet attrs) {
 //        super(context, attrs);
@@ -25,9 +29,7 @@ public class CustomCard extends View {
 //        }
 //    }
 
-    public CustomCard(Context context) {
-        super(context);
-    }
+
 
 //    public CustomCard(Context context, AttributeSet attrs) {
 //        super(context, attrs);
