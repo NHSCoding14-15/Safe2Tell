@@ -29,7 +29,9 @@ import java.lang.reflect.Array;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, NEWS.OnFragmentInteractionListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks,
+        NEWS.OnFragmentInteractionListener,
+        Card.OnFragmentInteractionListener{
 
 //    String[] drawerArray = getResources().getStringArray(R.array.drawerFields);
 
@@ -106,6 +108,12 @@ public class MainActivity extends ActionBarActivity
                 Intent intent = new Intent(this, SUBMIT_TIP.class);
                 startActivity(intent);
                 return;
+
+            case 6:
+                place = 6;
+                mTitle = "Card";
+                objFragment = new Card();
+                break;
 
             default:
                 place = -1;

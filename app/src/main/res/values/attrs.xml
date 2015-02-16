@@ -4,4 +4,20 @@
         <!--<attr name="title" format="string"/>-->
         <attr name="text" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="CustomCardView">
+        <attr name="txt" format="string"/>
+        <attr name="txtColor" format="color"/>
+        <attr name="titleTxt" format="string"/>
+        <attr name="titleStyle" format="reference"/>
+        <attr name="logoType" format="enum">
+            <enum name="drawable" value="0"/>
+            <enum name="file" value="1"/>
+        </attr>
+        <attr name="logoDrawable" format="reference"/>
+        <attr name="logoLocation" format="string"/>
+        <attr name="titleSize" format="dimension"/>
+        <attr name="txtSize" format="dimension"/>
+        <attr name="bgColor" format="reference"/>
+    </declare-styleable>
 </resources>
