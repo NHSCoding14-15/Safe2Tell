@@ -59,7 +59,10 @@ public class Card extends android.support.v4.app.Fragment {
         card.mTextSize = 25.0f;
         card.mTitleSize = 45.0f;
 
-        CustomCard[] dataset = new CustomCard[1];
+        CustomCard[] dataset = new CustomCard[10];
+        for (int i = 0; i < dataset.length; i++) {
+            dataset[i] = card;
+        }
         dataset[0] = card;
         mRecyclerView.setAdapter(new CardAdapter(dataset, getActivity()));
 

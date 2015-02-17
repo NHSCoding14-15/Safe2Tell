@@ -11,6 +11,7 @@
         custom:txt="Test"
         custom:titleTxt="Hello World!"
         custom:titleSize="40dp"
-        custom:txtSize="25dp"/>
+        custom:txtSize="25dp"
+        android:layout_marginTop="10dp"/>
 
 </FrameLayout>
