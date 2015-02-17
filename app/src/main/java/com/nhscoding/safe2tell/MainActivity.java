@@ -12,6 +12,8 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -33,6 +35,10 @@ public class MainActivity extends ActionBarActivity
         NEWS.OnFragmentInteractionListener,
         Card.OnFragmentInteractionListener{
 
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
 //    String[] drawerArray = getResources().getStringArray(R.array.drawerFields);
 
     int place;
@@ -45,6 +51,26 @@ public class MainActivity extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+
+    /*public void updateRecycler() {
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
+
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        CustomCard card = new CustomCard(this);
+        card.mText = "It works!";
+        card.mTitleText = "Testing";
+        card.mTextSize = 25.0f;
+        card.mTitleSize = 45.0f;
+
+        CustomCard[] dataset = new CustomCard[1];
+        dataset[0] = card;
+
+        mAdapter = new CardAdapter(dataset);
+        mRecyclerView.setAdapter(mAdapter);
+    }*/
 
 
     @Override
@@ -113,6 +139,7 @@ public class MainActivity extends ActionBarActivity
                 place = 6;
                 mTitle = "Card";
                 objFragment = new Card();
+                //updateRecycler();
                 break;
 
             default:

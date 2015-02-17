@@ -54,6 +54,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return dataset.length;
+        //return dataset.length;
+        return 1;
     }
 }
