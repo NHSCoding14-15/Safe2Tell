@@ -54,14 +54,15 @@ public class Card extends android.support.v4.app.Fragment {
         mRecyclerView.setLayoutManager(layoutManager);
 
         CustomCard card = new CustomCard(getActivity());
-        card.mText = "It works!";
+        card.setText("IT WORKS!!!");
         card.mTitleText = "Testing";
         card.mTextSize = 25.0f;
         card.mTitleSize = 45.0f;
 
         CustomCard[] dataset = new CustomCard[1];
         dataset[0] = card;
-        mRecyclerView.setAdapter(new CardAdapter(dataset));
+        mRecyclerView.setAdapter(new CardAdapter(dataset, getActivity()));
+
     }
 
     @Override

@@ -142,6 +142,9 @@ public class CustomCard extends View {
         height = card.height;
 
         mLinePaint = card.mLinePaint;
+
+        invalidate();
+        requestLayout();
     }
 
     public int getTextColor() {

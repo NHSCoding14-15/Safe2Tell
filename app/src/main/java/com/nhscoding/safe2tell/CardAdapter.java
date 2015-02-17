@@ -1,5 +1,6 @@
 package com.nhscoding.safe2tell;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,11 +13,12 @@ import android.view.ViewGroup;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
     public static final String TAG = "CardAdapter";
+    public static Context mContext;
 
     private CustomCard[] dataset;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final CustomCard card = null;
+        private final CustomCard card = new CustomCard(mContext);
 
         public ViewHolder(View v) {
             super(v);
@@ -34,8 +36,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         }
     }
 
-    public CardAdapter(CustomCard[] dataSet) {
-        dataSet = dataSet;
+    public CardAdapter(CustomCard[] dataSet, Context context) {
+        dataset = dataSet;
+        mContext = context;
     }
 
     @Override
@@ -50,11 +53,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Log.d(TAG, "Element " + i + " set");
         viewHolder.getCard().replace(dataset[i]);
+        return;
     }
 
     @Override
     public int getItemCount() {
-        //return dataset.length;
-        return 1;
+        return dataset.length;
+        //return 1;
     }
 }
