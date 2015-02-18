@@ -7,4 +7,9 @@ public class ProblemObject {
 
     int ID = -1;
     String Name = "Error";
+
+    public ProblemObject(int _ID, String _name) {
+        ID = _ID;
+        Name = _name;
+    }
 }

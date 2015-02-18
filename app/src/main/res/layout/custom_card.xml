@@ -1,17 +1,19 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nhscoding.safe2tell.Card">
+    tools:context="com.nhscoding.safe2tell.Card"
+    android:id="@+id/cardContainer"
+    android:orientation="vertical">
 
-    <com.nhscoding.safe2tell.CustomCard
+    <!--<com.nhscoding.safe2tell.CustomCard
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         custom:txt="Test"
         custom:titleTxt="Hello World!"
         custom:titleSize="40dp"
         custom:txtSize="25dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"/>-->
 
-</FrameLayout>
+</LinearLayout>

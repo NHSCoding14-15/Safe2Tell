@@ -1,6 +1,8 @@
 package com.nhscoding.safe2tell;
 
+import android.app.ProgressDialog;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nhscoding.safe2tell.API.ProblemObject;
 import com.nhscoding.safe2tell.API.ProblemParser;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by davidkopala on 2/6/15.
@@ -28,6 +39,20 @@ public class STORIES extends Fragment {
         Log.d("Safe2Tell-STORIES", "Attempting To Start Problem Parser");
         parser = new ProblemParser();
         parser.execute();
+        List problems = null;
+        InputStream is;
+        try {
+            is = parser.get(5000, TimeUnit.MILLISECONDS);
+            problems = parser.readJSONStream(is);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return rootview;
     }
 

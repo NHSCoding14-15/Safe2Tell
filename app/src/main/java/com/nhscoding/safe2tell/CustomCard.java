@@ -95,6 +95,7 @@ public class CustomCard extends View {
 
     public CustomCard(Context context) {
         super(context);
+        init();
     }
 
     public void setText(String text) {
@@ -203,8 +204,6 @@ public class CustomCard extends View {
     }
 
     private void init() {
-
-        mCustomCardView = new CustomCard(getContext());
 
         paddingLeft = getPaddingLeft();
         paddingTop = getPaddingTop();

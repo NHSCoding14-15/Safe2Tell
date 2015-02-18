@@ -1,9 +1,13 @@
 package com.nhscoding.safe2tell.API;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
+import android.util.JsonReader;
 import android.util.Log;
+
+import com.nhscoding.safe2tell.STORIES;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,18 +16,22 @@ import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by davidkopala on 2/13/15.
  */
-public class ProblemParser extends AsyncTask<String, String, String> {
+public class ProblemParser extends AsyncTask<InputStream, InputStream, InputStream> {
 
     InputStream is;
 
-    ProblemObject[] array;
+    List array;
+
+    public boolean finished = false;
 
     @Override
-    protected String doInBackground(String... params) {
+    protected InputStream doInBackground(InputStream... params) {
         try {
             URL url = new URL("http://24.8.58.134/Safe2Tell/API/ProblemAPI");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -38,11 +46,7 @@ public class ProblemParser extends AsyncTask<String, String, String> {
             Log.d("Response Code:", String.valueOf(response));
 
             is = conn.getInputStream();
-            Reader reader = new InputStreamReader(is, "UTF-8");
-            int length = conn.getContentLength();
-            char[] buffer = new char[length];
-            reader.read(buffer);
-            return new String(buffer);
+            return is;
         } catch (MalformedURLException e) {
             e.printStackTrace();
             Log.e("Malformed URL", e.getLocalizedMessage());
@@ -50,16 +54,62 @@ public class ProblemParser extends AsyncTask<String, String, String> {
             e.printStackTrace();
             Log.e("IO Exception", e.getLocalizedMessage());
         }
-        return "Error Occurred During Request";
+        return null;
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-        Log.i("HTTP Response:", s);
+    protected void onPostExecute(InputStream is) {
+        super.onPostExecute(is);
+        finished = true;
+        Log.i("Problem Parser", "Data Recieved");
+        try {
+            array = readJSONStream(is);
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public ProblemObject[] getArray () {
+    public List readJSONStream(InputStream is) throws IOException {
+        JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+        try{
+            return readProblemArray(reader);
+        } finally {
+            reader.close();
+        }
+    }
+
+    public List readProblemArray(JsonReader reader) throws IOException {
+        List problems = new ArrayList();
+
+        reader.beginArray();
+        while (reader.hasNext()) {
+            problems.add(readSection(reader));
+        }
+        reader.endArray();
+        return problems;
+    }
+
+    public ProblemObject readSection(JsonReader reader) throws IOException {
+        int id = -1;
+        String name = "";
+        reader.beginObject();
+        while (reader.hasNext()) {
+            String title = reader.nextName();
+            if (title.equals("ID")) {
+                id = reader.nextInt();
+            } else if(title.equals("Name")) {
+                name = reader.nextString();
+                name = name.replaceAll(" ", "");
+            } else {
+                reader.skipValue();
+            }
+        }
+        reader.endObject();
+        return new ProblemObject(id, name);
+    }
+
+    public List getArray () {
         return array;
     }
 }
