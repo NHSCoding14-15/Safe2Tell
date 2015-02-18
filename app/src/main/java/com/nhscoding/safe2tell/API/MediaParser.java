@@ -1,7 +1,5 @@
 package com.nhscoding.safe2tell.API;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -14,18 +12,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by davidkopala on 2/13/15.
+ * Created by david_000 on 2/17/2015.
  */
-public class ProblemParser extends AsyncTask<String, String, String> {
+public class MediaParser extends AsyncTask<String, String, String> {
 
     InputStream is;
 
-    ProblemObject[] array;
+    MediaObject[] array;
 
     @Override
     protected String doInBackground(String... params) {
         try {
-            URL url = new URL("http://24.8.58.134/Safe2Tell/API/ProblemAPI");
+            URL url = new URL("http://24.8.58.134/Safe2Tell/API/MediaAPI");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(10000);
             conn.setConnectTimeout(15000);
@@ -59,7 +57,7 @@ public class ProblemParser extends AsyncTask<String, String, String> {
         Log.i("HTTP Response:", s);
     }
 
-    public ProblemObject[] getArray () {
+    public MediaObject[] getArray () {
         return array;
     }
 }

@@ -18,7 +18,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     private CustomCard[] dataset;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final CustomCard card = new CustomCard(mContext);
+        private CustomCard card = new CustomCard(mContext);
 
         public ViewHolder(View v) {
             super(v);
@@ -33,6 +33,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
         public CustomCard getCard() {
             return card;
+        }
+
+        public void replaceCard(CustomCard customCard) {
+            card = customCard;
         }
     }
 
@@ -52,7 +56,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Log.d(TAG, "Element " + i + " set");
-        viewHolder.getCard().replace(dataset[i]);
+        viewHolder.replaceCard(dataset[i]);
         return;
     }
 

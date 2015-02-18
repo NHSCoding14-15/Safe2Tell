@@ -63,7 +63,7 @@ public class PostParser extends AsyncTask<String, String, String>{
         HttpResponse response;
         String responseString = null;
         try {
-            response = httpclient.execute(new HttpGet("http://24.8.58.134/Safe2Tell/api/PostsAPI"));
+            response = httpclient.execute(new HttpGet("http://24.8.58.134/Safe2Tell/api/PostAPI"));
             StatusLine statusLine = response.getStatusLine();
             if(statusLine.getStatusCode() == HttpStatus.SC_OK){
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -80,6 +80,7 @@ public class PostParser extends AsyncTask<String, String, String>{
         } catch (IOException e) {
             //TODO Handle problems..
         }
+        //responseString = responseString.remo
         return responseString;
     }
 
