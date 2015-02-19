@@ -25,7 +25,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         public ViewHolder(View v) {
             super(v);
             view = v;
-
+            card = (CustomCard) v.findViewById(R.id.recyclerCard);
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
             public void onClick(View v) {
@@ -61,7 +61,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Log.d(TAG, "Element " + i + " set");
-        ((LinearLayout) viewHolder.getView()).addView(dataset[i]);
+        viewHolder.getCard().setText(dataset[i].getText());
+        viewHolder.getCard().setText(dataset[i].mTitleText);
+        viewHolder.getCard().setTextSize(dataset[i].getTextSize());
+        viewHolder.getCard().setTitleSize(dataset[i].getTitleSize());
+        //viewHolder.getCard().setPadding(0, 15, 0, 10);
         return;
     }
 

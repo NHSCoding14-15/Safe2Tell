@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -42,8 +43,6 @@ public class CustomCard extends View {
 
     Paint mLinePaint;
 
-    CustomCard mCustomCardView;
-
     public CustomCard(Context context, AttributeSet attrs) {
         super(context, attrs);
 
@@ -75,22 +74,24 @@ public class CustomCard extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-      //canvas.drawText(text      , float x  , float y  , paint     );
 
         for (int i = 0; i < textArray.length; i++) {
             String text = textArray[i];
-            int place = i;
-            float posY = place * (mTextSize + 05) + textPosY;
+            float posY = i * (mTextSize + 5) + textPosY;
             if (text != null) {
                 canvas.drawText(text, textPosX, posY, mTextPaint);
+                Log.i("Context Text", text);
+                Log.i("Content Text Size", String.valueOf(mTextPaint.getTextSize()));
             }
         }
 
         String width = String.valueOf(getWidth());
         //canvas.drawText(width, titlePosX, titlePosY, mTitlePaint);
         canvas.drawText(mTitleText, titlePosX, titlePosY, mTitlePaint);
+        Log.i("Title Text", mTitleText);
+        Log.i("Title Text Size", String.valueOf(mTitlePaint.getTextSize()));
         //canvas.drawText(mText, textPosX, textPosY, mTextPaint);
-        canvas.drawLine(titlePosX, titlePosY+10, getWidth()-50, titlePosY+10, mLinePaint);
+        canvas.drawLine(titlePosX, titlePosY + 10, getWidth() - 50, titlePosY + 10, mLinePaint);
     }
 
     public CustomCard(Context context) {
@@ -102,6 +103,22 @@ public class CustomCard extends View {
         mText = text;
         invalidate();
         requestLayout();
+    }
+
+    public float getTextSize() {
+        return mTextSize;
+    }
+
+    public void setTextSize(float size) {
+        mTextSize = size;
+    }
+
+    public float getTitleSize() {
+        return mTitleSize;
+    }
+
+    public void setTitleSize(float size) {
+        mTitleSize = size;
     }
 
     public String getText() {
@@ -143,6 +160,8 @@ public class CustomCard extends View {
         height = card.height;
 
         mLinePaint = card.mLinePaint;
+
+        init();
 
         invalidate();
         requestLayout();
@@ -191,7 +210,7 @@ public class CustomCard extends View {
         }
 
         width = width - (getPaddingLeft() + getPaddingRight());
-        height = (int) (height + mTitleSize + 40 + getPaddingBottom() + getPaddingTop());
+        height = (int) ((height) + (mTitleSize) + 40 + getPaddingBottom() + getPaddingTop());
 
         setMeasuredDimension(width, height);
     }

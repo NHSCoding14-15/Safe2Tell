@@ -7,13 +7,15 @@
     android:id="@+id/cardContainer"
     android:orientation="vertical">
 
-    <!--<com.nhscoding.safe2tell.CustomCard
+    <com.nhscoding.safe2tell.CustomCard
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         custom:txt="Test"
         custom:titleTxt="Hello World!"
         custom:titleSize="40dp"
         custom:txtSize="25dp"
-        android:layout_marginTop="10dp"/>-->
+        android:layout_marginTop="10dp"
+        android:paddingBottom="15dp"
+        android:id="@+id/recyclerCard"/>
 
 </LinearLayout>
