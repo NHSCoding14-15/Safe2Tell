@@ -62,9 +62,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Log.d(TAG, "Element " + i + " set");
         viewHolder.getCard().setText(dataset[i].getText());
-        viewHolder.getCard().setText(dataset[i].mTitleText);
-        viewHolder.getCard().setTextSize(dataset[i].getTextSize());
-        viewHolder.getCard().setTitleSize(dataset[i].getTitleSize());
+        viewHolder.getCard().setTitle(dataset[i].getTitleText());
+        //viewHolder.getCard().setTextSize(dataset[i].getTextSize());
+        //viewHolder.getCard().setTitleSize(dataset[i].getTitleSize());
         //viewHolder.getCard().setPadding(0, 15, 0, 10);
         return;
     }

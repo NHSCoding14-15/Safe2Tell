@@ -3,6 +3,7 @@ package com.nhscoding.safe2tell;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -46,7 +47,7 @@ public class CustomCard extends View {
     public CustomCard(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        setBackgroundColor(getResources().getColor(R.color.secondary_text_disabled_material_light));
+        setBackgroundColor(Color.parseColor("#D2D1BB"));
 
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
@@ -97,6 +98,14 @@ public class CustomCard extends View {
     public CustomCard(Context context) {
         super(context);
         init();
+    }
+
+    public void setTitle(String text) {
+        mTitleText = text;
+    }
+
+    public String getTitleText() {
+        return mTitleText;
     }
 
     public void setText(String text) {
