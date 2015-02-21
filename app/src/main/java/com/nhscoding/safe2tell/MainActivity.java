@@ -33,7 +33,8 @@ import java.lang.reflect.Array;
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
         STORIES.OnFragmentInteractionListener,
-        Card.OnFragmentInteractionListener{
+        Card.OnFragmentInteractionListener,
+        ViewPagerTest.OnFragmentInteractionListener{
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -51,26 +52,6 @@ public class MainActivity extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
-
-    /*public void updateRecycler() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        CustomCard card = new CustomCard(this);
-        card.mText = "It works!";
-        card.mTitleText = "Testing";
-        card.mTextSize = 25.0f;
-        card.mTitleSize = 45.0f;
-
-        CustomCard[] dataset = new CustomCard[1];
-        dataset[0] = card;
-
-        mAdapter = new CardAdapter(dataset);
-        mRecyclerView.setAdapter(mAdapter);
-    }*/
 
 
     @Override
@@ -140,6 +121,12 @@ public class MainActivity extends ActionBarActivity
                 mTitle = "Card";
                 objFragment = new Card();
                 //updateRecycler();
+                break;
+
+            case 7:
+                place = 7;
+                mTitle = "View Pager";
+                objFragment = new ViewPagerTest();
                 break;
 
             default:

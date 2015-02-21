@@ -4,13 +4,18 @@ import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nhscoding.safe2tell.API.PostObject;
+import com.nhscoding.safe2tell.API.PostParser;
 import com.nhscoding.safe2tell.API.ProblemObject;
 import com.nhscoding.safe2tell.API.ProblemParser;
 
@@ -31,11 +36,63 @@ public class STORIES extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    ProblemParser parser;
+    PostParser postParser;
+
+    RecyclerView mRecyclerView;
+    CardAdapter adapter;
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(layoutManager);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_stories, container, false);
+
+        mRecyclerView = (RecyclerView) rootview.findViewById(R.id.storiesRecycler);
+
+        Log.d("Safe2Tell-STORIES", "Attempting To Start Problem Parser");
+        postParser = new PostParser();
+        postParser.execute();
+        List Posts = null;
+        InputStream is;
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        try {
+            is = postParser.get(5000, TimeUnit.MILLISECONDS);
+            Posts = postParser.readJSONStream(is);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        CustomCard[] dataset = new CustomCard[Posts.size()];
+
+        for (int i = 0; i < Posts.size(); i++) {
+            PostObject entry = (PostObject) Posts.get(i);
+            Log.i("Title", entry._Title);
+            Log.i("Text", entry._Text);
+
+            CustomCard card = new CustomCard(getActivity());
+            card.setTitle(entry._Title);
+            card.setText(entry._Text);
+
+            dataset[i] = card;
+        }
+
+        adapter = new CardAdapter(dataset, getActivity());
+        mRecyclerView.setAdapter(adapter);
+
         return rootview;
     }
 
