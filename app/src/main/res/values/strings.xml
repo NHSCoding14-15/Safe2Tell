@@ -87,8 +87,8 @@ The body is smart. It goes on the defense when it’s being poisoned. For this r
 
     <string name="title_activity_submit__tip">New Tip</string>
     <string name="hello_world">Hello world!</string>
-    <color name="fab_back">#ff00ff</color>
-    <color name="fab_pressed_back">#00ff00</color>
+    <color name="fab_back">#FFFF00</color>
+    <color name="fab_pressed_back">#CCCC00</color>
 
     <string name="test">test</string>
     <string name="card1_title">New Safe2Tell App to be released soon!</string>

@@ -32,7 +32,7 @@ import java.lang.reflect.Array;
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
-        NEWS.OnFragmentInteractionListener,
+        STORIES.OnFragmentInteractionListener,
         Card.OnFragmentInteractionListener{
 
     private RecyclerView mRecyclerView;
