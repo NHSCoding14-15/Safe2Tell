@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.nhscoding.safe2tell.ABOUT_US"
+    android:background="@color/lrn_back"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Drug Abuse"
+                android:id="@+id/textView"
+                android:layout_gravity="center_horizontal|top"
+                android:gravity="center"
+                android:textSize="45dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/drug_abuse"
+                android:id="@+id/textView2"
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:textSize="30dp"
+                android:gravity="center"
+                android:maxLines="60"
+                android:scrollbars="vertical"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- TODO: Scrollbar -->
+
+
+
+
+</RelativeLayout>
