@@ -7,6 +7,25 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="@string/hello_blank_fragment"
+        />
+    <com.example.android.floatingactionbuttonbasic.FloatingActionButton
+        android:id="@+id/fab_1"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:layout_marginTop="16dp"
+        android:elevation="@dimen/fab_elevation"
+        android:background="@color/fab_back"
+        android:stateListAnimator="@animator/fab_anim"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/fab_icon_size"
+            android:layout_height="@dimen/fab_icon_size"
+            android:src="@drawable/fab_icons"
+            android:layout_gravity="center"
+            android:duplicateParentState="true"/>
+
+    </com.example.android.floatingactionbuttonbasic.FloatingActionButton>
 
 </FrameLayout>
