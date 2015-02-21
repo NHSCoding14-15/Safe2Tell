@@ -7,4 +7,9 @@ public class GenreObject {
 
     int ID = -1;
     String Name = "";
+
+    public GenreObject(int id, String name) {
+        ID = id;
+        Name = name;
+    }
 }

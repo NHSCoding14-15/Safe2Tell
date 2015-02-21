@@ -14,9 +14,20 @@ public class PostObject extends Object {
     public String _Title = "Error";
     public String _Text = "Error";
     public Boolean _media = false;
+    public int _Level = -1;
 
     PostObject() {
         super();
+    }
+
+    public PostObject(int id, int level, int genre, int logo, int problemID, String text, String title) {
+        _ID = id;
+        _Genre = genre;
+        _ProblemID = problemID;
+        _logo = logo;
+        _Title = title;
+        _Text = text;
+        _Level = level;
     }
 
     public void setID (int ID) {

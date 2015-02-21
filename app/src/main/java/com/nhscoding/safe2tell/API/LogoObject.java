@@ -8,4 +8,10 @@ public class LogoObject {
     int ID = -1;
     int type = -1;
     String Resource = "";
+
+    public LogoObject(int id, int _type, String resource) {
+        ID = id;
+        type = _type;
+        Resource = resource;
+    }
 }

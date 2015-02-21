@@ -26,7 +26,7 @@ public class ProblemParser extends AsyncTask<InputStream, InputStream, InputStre
 
     InputStream is;
 
-    List array;
+    List list;
 
     public boolean finished = false;
 
@@ -63,7 +63,7 @@ public class ProblemParser extends AsyncTask<InputStream, InputStream, InputStre
         finished = true;
         Log.i("Problem Parser", "Data Recieved");
         try {
-            array = readJSONStream(is);
+            list = readJSONStream(is);
             is.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -109,7 +109,7 @@ public class ProblemParser extends AsyncTask<InputStream, InputStream, InputStre
         return new ProblemObject(id, name);
     }
 
-    public List getArray () {
-        return array;
+    public List getList () {
+        return list;
     }
 }
