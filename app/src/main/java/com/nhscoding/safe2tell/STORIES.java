@@ -36,23 +36,6 @@ public class STORIES extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_stories, container, false);
-        Log.d("Safe2Tell-STORIES", "Attempting To Start Problem Parser");
-        parser = new ProblemParser();
-        parser.execute();
-        List problems = null;
-        InputStream is;
-        try {
-            is = parser.get(5000, TimeUnit.MILLISECONDS);
-            problems = parser.readJSONStream(is);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return rootview;
     }
 

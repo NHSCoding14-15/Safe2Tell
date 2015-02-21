@@ -1,22 +1,18 @@
 package com.nhscoding.safe2tell.API;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.util.JsonReader;
 import android.util.Log;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import com.nhscoding.safe2tell.STORIES;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -24,50 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by david_000 on 2/11/2015.
+ * Created by davidkopala on 2/13/15.
  */
-/*public class PostParser extends AsyncTask {
-
-    public Boolean finished = false;
-    PostObject[] results;
-
-    @Override
-    protected String doInBackground(Object[] params) {
-        return "test";
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-        super.onPostExecute(result);
-        PostObject post;
-        post = null;
-        if (post == null) {
-            post = new PostObject();
-        }
-        int length = 0;
-        for (int i = 0; i < 0; i++) {
-            length++;
-        }
-        results = new PostObject[length];
-        for (int i = 0; i < length; i++) {
-
-        }
-        finished = true;
-    }
-
-    public Boolean getFinished() {
-        return finished;
-    }
-
-    public PostObject[] getResults() {
-        return results;
-    }
-}*/
 public class PostParser extends AsyncTask<InputStream, InputStream, InputStream> {
 
     InputStream is;
 
-    List array;
+    List list;
 
     public boolean finished = false;
 
@@ -102,9 +61,9 @@ public class PostParser extends AsyncTask<InputStream, InputStream, InputStream>
     protected void onPostExecute(InputStream is) {
         super.onPostExecute(is);
         finished = true;
-        Log.i("Post Parser", "Data Recieved");
+        Log.i("Problem Parser", "Data Recieved");
         try {
-            array = readJSONStream(is);
+            list = readJSONStream(is);
             is.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -132,9 +91,9 @@ public class PostParser extends AsyncTask<InputStream, InputStream, InputStream>
     }
 
     public PostObject readSection(JsonReader reader) throws IOException {
+        int Genre  = -1;
         int id = -1;
         int Level = -1;
-        int Genre = -1;
         int Logo = -1;
         int ProblemID = -1;
         String Text = "";
@@ -142,38 +101,33 @@ public class PostParser extends AsyncTask<InputStream, InputStream, InputStream>
         reader.beginObject();
         while (reader.hasNext()) {
             String title = reader.nextName();
-            switch (title) {
-                case "ID":
-                    id = reader.nextInt();
-                    break;
-                case "Level":
-                    Level = reader.nextInt();
-                    break;
-                case "Logo":
-                    Logo = reader.nextInt();
-                    break;
-                case "ProblemID":
-                    ProblemID = reader.nextInt();
-                    break;
-                case "Text":
-                    Text = reader.nextString();
-                    break;
-                case "Title":
-                    Title = reader.nextString();
-                    break;
-                case "Genre":
-                    Genre = reader.nextInt();
-                    break;
-                default:
-                    reader.skipValue();
-                    break;
+            if (title.equals("ID")) {
+                id = reader.nextInt();
+            } else if (title.equals("Genre")) {
+                Genre = reader.nextInt();
+            } else if(title.equals("Level")) {
+                Level = reader.nextInt();
+            } else if (title.equals("Logo")) {
+                Logo = reader.nextInt();
+            } else  if (title.equals("ProblemID")) {
+                ProblemID = reader.nextInt();
+            } else if (title.equals("Text")) {
+                Text = reader.nextString();
+                Text = Text.replaceAll(" ", "");
+                Text = Text.replaceAll("13579", " ");
+            } else if (title.equals("Title")) {
+                Title = reader.nextString();
+                Title = Title.replaceAll(" ", "");
+                Title = Title.replaceAll("13579", " ");
+            } else {
+                reader.skipValue();
             }
         }
         reader.endObject();
         return new PostObject(id, Level, Genre, Logo, ProblemID, Text, Title);
     }
 
-    public List getArray () {
-        return array;
+    public List getList () {
+        return list;
     }
 }
