@@ -10,6 +10,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by davidkopala on 2/13/15.
  */
@@ -37,7 +40,7 @@ public class CustomCard extends View {
     float paddingTop;
     float paddingBottom;
 
-    String[] textArray;
+    List textArray = new ArrayList();
 
     int width = 0;
     int height = 0;
@@ -78,8 +81,8 @@ public class CustomCard extends View {
         super.onDraw(canvas);
 
         //Draw Content Text
-        for (int i = 0; i < textArray.length; i++) {
-            String text = textArray[i];
+        for (int i = 0; i < textArray.size(); i++) {
+            String text = (String) textArray.get(i);
             float posY = i * (mTextSize + 5) + textPosY;
             if (text != null) {
                 canvas.drawText(text, textPosX, posY, mTextPaint);
@@ -191,17 +194,17 @@ public class CustomCard extends View {
 
         //Dynamically Calculating the Height Based on The Content Text
         String tempText = "";
-        char[] text = mText.toCharArray();
-        textArray = new String[(int) (mTextPaint.measureText(mText) / adjWidth) + 2];
+        mText += " Safe2Tell";
+        String[] text = mText.split(" ");
         int position = -1;
 
         try {
             for (int i = 0; i < text.length; i++) {
-                char aText = text[i];
-                tempText += aText;
-                int room = (int) (adjWidth - mTextPaint.measureText(tempText));
-                int size = (int) mTextPaint.measureText("_______");
-                if ((room < size) && (aText == ' ')) {
+                String aText = text[i] + " ";
+                //tempText += aText;
+                /*int room = (int) (adjWidth - mTextPaint.measureText(tempText));
+                int size = adjWidth;
+                if ((room < size) && (aText == " ")) {
                     position++;
                     textArray[position] = tempText;
                     tempText = "";
@@ -211,6 +214,20 @@ public class CustomCard extends View {
                         position++;
                         textArray[position] = tempText;
                         tempText = "";
+                        height += mTextSize + 5;
+                    }
+                }*/
+                int testWidth = (int) mTextPaint.measureText(tempText + aText);
+                if (testWidth > adjWidth) {
+                    position++;
+                    textArray.add(tempText);
+                    tempText = "";
+                    tempText += aText;
+                    height += mTextSize + 5;
+                } else {
+                    tempText += aText;
+                    if ((i + 1) == text.length) {
+                        textArray.add(tempText);
                         height += mTextSize + 5;
                     }
                 }

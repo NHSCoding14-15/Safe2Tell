@@ -10,7 +10,7 @@
     <com.nhscoding.safe2tell.CustomCard
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        custom:txt="Did you know that most"
+        custom:txt="Did you know that a"
         custom:titleTxt="Hello World!"
         custom:titleSize="40dp"
         custom:txtSize="25dp"
