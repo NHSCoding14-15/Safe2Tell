@@ -56,8 +56,9 @@ public class CustomCard extends View {
         );
 
         try {
+            //Get Values From The XML File
             mText = a.getString(R.styleable.CustomCardView_txt);
-            mTextColor = a.getInt(R.styleable.CustomCardView_txtColor, 0xff000000);
+            mTextColor = a.getInt(R.styleable.CustomCardView_txtColor, /*Default Value*/0xff000000);
             mTextSize = a.getDimension(R.styleable.CustomCardView_txtSize, 0.0f);
 
             mTitleText = a.getString(R.styleable.CustomCardView_titleTxt);
@@ -76,6 +77,7 @@ public class CustomCard extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        //Draw Content Text
         for (int i = 0; i < textArray.length; i++) {
             String text = textArray[i];
             float posY = i * (mTextSize + 5) + textPosY;
@@ -85,13 +87,9 @@ public class CustomCard extends View {
                 Log.i("Content Text Size", String.valueOf(mTextPaint.getTextSize()));
             }
         }
-
-        String width = String.valueOf(getWidth());
-        //canvas.drawText(width, titlePosX, titlePosY, mTitlePaint);
+        //Draw Title Text
         canvas.drawText(mTitleText, titlePosX, titlePosY, mTitlePaint);
-        Log.i("Title Text", mTitleText);
-        Log.i("Title Text Size", String.valueOf(mTitlePaint.getTextSize()));
-        //canvas.drawText(mText, textPosX, textPosY, mTextPaint);
+        //Underline Title
         canvas.drawLine(titlePosX, titlePosY + 10, getWidth() - 50, titlePosY + 10, mLinePaint);
     }
 
@@ -136,6 +134,7 @@ public class CustomCard extends View {
 
     public void setTextColor(int color) {
         mTextColor = color;
+        //Refresh the View
         invalidate();
         requestLayout();
     }
@@ -170,6 +169,7 @@ public class CustomCard extends View {
 
         mLinePaint = card.mLinePaint;
 
+        //Update Properties
         init();
 
         invalidate();
@@ -185,10 +185,13 @@ public class CustomCard extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         height = 0;
+        //Get Measured Width
         width = MeasureSpec.getSize(widthMeasureSpec);
 
+        //Add A Margin of 60
         int adjWidth = width - 60;
 
+        //Dynamically Calculating the Height Based on The Content Text
         String tempText = "";
         char[] text = mText.toCharArray();
         textArray = new String[(int) (mTextPaint.measureText(mText) / adjWidth) + 2];
@@ -201,7 +204,6 @@ public class CustomCard extends View {
                 int room = (int) (adjWidth - mTextPaint.measureText(tempText));
                 int size = (int) mTextPaint.measureText("_______");
                 if ((room < size) && (aText == ' ')) {
-                    position++;
                     textArray[position] = tempText;
                     tempText = "";
                     height += mTextSize + 10;
@@ -218,39 +220,47 @@ public class CustomCard extends View {
             e.printStackTrace();
         }
 
-        width = width - (getPaddingLeft() + getPaddingRight());
+        //Add Padding To The Width
+        width = width + (getPaddingLeft() + getPaddingRight());
+        //Add Padding And Title To The Height
         height = (int) ((height) + (mTitleSize) + 40 + getPaddingBottom() + getPaddingTop());
 
+        //Update The Height And Width
+        //This is what directly sets the dimensions
         setMeasuredDimension(width, height);
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        /*setMeasuredDimension((w-(getPaddingLeft() + getPaddingRight())),
-                h - (getPaddingTop() + getPaddingBottom()));*/
     }
 
     private void init() {
 
+        //Get Padding
         paddingLeft = getPaddingLeft();
         paddingTop = getPaddingTop();
 
+        //Set Title Position
         titlePosX = paddingLeft + 30.0f;
         titlePosY = paddingTop + mTitleSize + 10.0f;
 
+        //Set Text Position
         textPosX = paddingLeft + 30.0f;
         textPosY = titlePosY + mTextSize + 30.0f;
 
+        //Set Text Properties
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setStyle(Paint.Style.FILL);
         mTextPaint.setTextSize(mTextSize);
         mTextPaint.setColor(mTextColor);
 
+        //Set Title Properties
         mTitlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTitlePaint.setStyle(Paint.Style.FILL);
         mTitlePaint.setTextSize(mTitleSize);
 
+        //Set Underline Properties
         mLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mLinePaint.setColor(getResources().getColor(R.color.material_blue_grey_800));
     }
