@@ -54,7 +54,6 @@ public class STORIES extends Fragment {
 
         mRecyclerView = (RecyclerView) rootview.findViewById(R.id.storiesRecycler);
 
-        Log.d("Safe2Tell-STORIES", "Attempting To Start Problem Parser");
         postParser = new PostParser();
         postParser.execute();
         List Posts = null;
@@ -76,18 +75,21 @@ public class STORIES extends Fragment {
             e.printStackTrace();
         }
 
-        CustomCard[] dataset = new CustomCard[Posts.size()];
+        CustomCard[] dataset = new CustomCard[0];
+        if (Posts != null) {
+            dataset = new CustomCard[Posts.size()];
 
-        for (int i = 0; i < Posts.size(); i++) {
-            PostObject entry = (PostObject) Posts.get(i);
-            Log.i("Title", entry._Title);
-            Log.i("Text", entry._Text);
+            for (int i = 0; i < Posts.size(); i++) {
+                PostObject entry = (PostObject) Posts.get(i);
+                Log.i("Title", entry._Title);
+                Log.i("Text", entry._Text);
 
-            CustomCard card = new CustomCard(getActivity());
-            card.setTitle(entry._Title);
-            card.setText(entry._Text);
+                CustomCard card = new CustomCard(getActivity());
+                card.setTitle(entry._Title);
+                card.setText(entry._Text);
 
-            dataset[i] = card;
+                dataset[i] = card;
+            }
         }
 
         adapter = new CardAdapter(dataset, getActivity());
