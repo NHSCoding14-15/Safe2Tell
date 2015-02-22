@@ -28,9 +28,20 @@ public class LEARN extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onViewCreated (View rootView, Bundle savedInstanceState){
+        final Button btn= (Button) rootView.findViewById(R.id.subTip);
+        btn.setOnClickListener(new View.OnClickListener() {
+                                 @Override
+                                 public void onClick(View v) {
+                                     Intent intent = new Intent (v.getContext(),SUBMIT_TIP.class);
+                                     startActivityForResult(intent,0);
+                                 }
+                             }
+
+        );
     }
+
+
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

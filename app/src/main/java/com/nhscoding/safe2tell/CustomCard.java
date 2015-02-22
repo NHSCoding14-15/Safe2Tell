@@ -50,7 +50,7 @@ public class CustomCard extends View {
     public CustomCard(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        setBackgroundColor(Color.parseColor("#D2D1BB"));
+        setBackgroundColor(Color.parseColor("#ffffff"));
 
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
@@ -91,7 +91,7 @@ public class CustomCard extends View {
         //Draw Title Text
         canvas.drawText(mTitleText, titlePosX, titlePosY, mTitlePaint);
         //Underline Title
-        canvas.drawLine(titlePosX, titlePosY + 10, getWidth() - 50, titlePosY + 10, mLinePaint);
+//        canvas.drawLine(titlePosX, titlePosY + 10, getWidth() - 50, titlePosY + 10, mLinePaint);
     }
 
     public CustomCard(Context context) {
