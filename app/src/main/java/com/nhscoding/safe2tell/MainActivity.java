@@ -106,7 +106,7 @@ public class MainActivity extends ActionBarActivity
             case 4:
                 place = 4;
                 mTitle = "Problem";
-                objFragment = new PROBLEM();
+                objFragment = new PROBLEM(0);
                 break;
 
             case 5:
@@ -167,6 +167,11 @@ public class MainActivity extends ActionBarActivity
                 @Override
                 public boolean onNavigationItemSelected(int i, long l) {
                     Log.i("Navigation Item Selected", items[i]);
+                    Fragment frag = new PROBLEM(i);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, frag)
+                            .commit();
                     return true;
                 }
             };

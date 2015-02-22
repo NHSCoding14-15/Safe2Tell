@@ -18,11 +18,13 @@ import android.widget.SpinnerAdapter;
 
 import com.nhscoding.safe2tell.API.PostObject;
 import com.nhscoding.safe2tell.API.PostParser;
+import com.nhscoding.safe2tell.API.ProblemObject;
 import com.nhscoding.safe2tell.API.ProblemParser;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -46,7 +48,18 @@ public class PROBLEM extends android.support.v4.app.Fragment {
     CardAdapter adapter;
 
     PostParser postParser;
-    ProblemParser parser;
+
+    String name = "";
+    String key1 = "arrayID";
+
+    int ID = -1;
+    ProblemParser problemParser;
+    List Problems = new ArrayList();
+    List Posts = new ArrayList();
+
+    public PROBLEM(int i) {
+        ID = i;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,18 +67,23 @@ public class PROBLEM extends android.support.v4.app.Fragment {
 
         mRecyclerView = (RecyclerView) rootview.findViewById(R.id.problemRecycler);
 
-        Log.d("Safe2Tell-STORIES", "Attempting To Start Problem Parser");
         postParser = new PostParser();
         postParser.execute();
-        List Posts = null;
-        InputStream is;
+        InputStream postIn;
+
+        problemParser = new ProblemParser();
+        problemParser.execute();
+        InputStream problemIn;
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         try {
-            is = postParser.get(5000, TimeUnit.MILLISECONDS);
-            Posts = postParser.readJSONStream(is);
+            postIn = postParser.get(5000, TimeUnit.MILLISECONDS);
+            Posts = postParser.readJSONStream(postIn);
+
+            problemIn = problemParser.get(5000, TimeUnit.MILLISECONDS);
+            Problems = problemParser.readJSONStream(problemIn);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -76,18 +94,38 @@ public class PROBLEM extends android.support.v4.app.Fragment {
             e.printStackTrace();
         }
 
-        CustomCard[] dataset = new CustomCard[Posts.size()];
+        CustomCard[] dataset = null;
+
+        for (int i = 0; i < Problems.size(); i++) {
+            ProblemObject entry = (ProblemObject) Problems.get(i);
+            String _name = entry.Name;
+            if (name.equals(_name)) {
+                ID = entry.ID;
+                break;
+            }
+        }
+
+        int count = 0;
 
         for (int i = 0; i < Posts.size(); i++) {
             PostObject entry = (PostObject) Posts.get(i);
-            Log.i("Title", entry._Title);
-            Log.i("Text", entry._Text);
+            if (entry._ID == ID) {
+                count++;
+            }
+        }
 
-            CustomCard card = new CustomCard(getActivity());
-            card.setTitle(entry._Title);
-            card.setText(entry._Text);
+        dataset = new CustomCard[count];
 
-            dataset[i] = card;
+        for (int data = 0; data < dataset.length; data++) {
+            for (int i = 0; i < Posts.size(); i++) {
+                PostObject entry = (PostObject) Posts.get(i);
+                if (entry._ID == ID) {
+                    CustomCard card = new CustomCard(getActivity());
+                    card.mText = entry._Text;
+                    card.mTitleText = entry._Title;
+                    dataset[data] = card;
+                }
+            }
         }
 
         adapter = new CardAdapter(dataset, getActivity());
@@ -110,7 +148,13 @@ public class PROBLEM extends android.support.v4.app.Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getArguments() != null) {
+            int i = Integer.parseInt(getArguments().getString(key1));
 
+            String[] array = getResources().getStringArray(R.array.problems);
+            name = array[i];
+            Log.i("Name", name);
+        }
     }
 
     public void onButtonPressed(Uri uri) {
@@ -125,10 +169,8 @@ public class PROBLEM extends android.support.v4.app.Fragment {
         mListener = null;
     }
 
-    public static PROBLEM newInstance() {
-        PROBLEM fragment = new PROBLEM();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+    public static PROBLEM newInstance(int i) {
+        PROBLEM fragment = new PROBLEM(-1);
         return fragment;
     }
 
