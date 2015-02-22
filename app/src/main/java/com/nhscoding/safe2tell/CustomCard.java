@@ -47,7 +47,7 @@ public class CustomCard extends View {
     public CustomCard(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        setBackgroundColor(Color.parseColor("#D2D1BB"));
+        setBackgroundColor(Color.parseColor("#ffffff"));
 
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
