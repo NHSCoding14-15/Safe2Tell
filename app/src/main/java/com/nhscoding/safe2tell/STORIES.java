@@ -75,12 +75,12 @@ public class STORIES extends Fragment {
             e.printStackTrace();
         }
 
-        CustomCard[] dataset = new CustomCard[0];
+        CustomCard[] dataset = new CustomCard[Posts.size()];
         if (Posts != null) {
             dataset = new CustomCard[Posts.size()];
 
             for (int i = 0; i < Posts.size(); i++) {
-                PostObject entry = (PostObject) Posts.get(i);
+                PostObject entry = (PostObject) Posts.get(Posts.size() - (i + 1));
                 Log.i("Title", entry._Title);
                 Log.i("Text", entry._Text);
 

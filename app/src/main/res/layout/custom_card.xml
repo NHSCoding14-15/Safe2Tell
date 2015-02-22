@@ -10,13 +10,13 @@
     <com.nhscoding.safe2tell.CustomCard
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        custom:txt="Test"
+        custom:txt="Did you know that most"
         custom:titleTxt="Hello World!"
         custom:titleSize="40dp"
         custom:txtSize="25dp"
         android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:paddingBottom="15dp"
         android:id="@+id/recyclerCard"/>
 

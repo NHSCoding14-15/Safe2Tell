@@ -83,8 +83,6 @@ public class CustomCard extends View {
             float posY = i * (mTextSize + 5) + textPosY;
             if (text != null) {
                 canvas.drawText(text, textPosX, posY, mTextPaint);
-                Log.i("Context Text", text);
-                Log.i("Content Text Size", String.valueOf(mTextPaint.getTextSize()));
             }
         }
         //Draw Title Text
@@ -204,15 +202,16 @@ public class CustomCard extends View {
                 int room = (int) (adjWidth - mTextPaint.measureText(tempText));
                 int size = (int) mTextPaint.measureText("_______");
                 if ((room < size) && (aText == ' ')) {
+                    position++;
                     textArray[position] = tempText;
                     tempText = "";
-                    height += mTextSize + 10;
+                    height += mTextSize + 5;
                 } else {
                     if((i + 1) == text.length) {
                         position++;
                         textArray[position] = tempText;
                         tempText = "";
-                        height += mTextSize + 10;
+                        height += mTextSize + 5;
                     }
                 }
             }

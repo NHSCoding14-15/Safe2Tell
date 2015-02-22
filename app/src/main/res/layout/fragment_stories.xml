@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.nhscoding.safe2tell.STORIES"
-    android:background="@color/stor_back">
+    android:background="@color/material_blue_grey_800">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
