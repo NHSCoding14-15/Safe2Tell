@@ -98,6 +98,8 @@ The body is smart. It goes on the defense when it’s being poisoned. For this r
     <string name="card4_title">1 in 5 K-12 students is a victim of bullying!</string>
     <string name="card5_title">Help stop suicides, learn these life-saving tips!</string>
 
+    <color name="custom_card_bkg">#ffffff</color>
+
 
 
 </resources>

@@ -1,5 +1,7 @@
 package com.nhscoding.safe2tell;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,11 +9,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * Created by davidkopala on 2/6/15.
  */
 public class LEARN extends Fragment {
+
 
     View rootview;
 
@@ -44,11 +48,23 @@ public class LEARN extends Fragment {
         LEARN fragment = new LEARN();
         Bundle args = new Bundle();
         fragment.setArguments(args);
-        return fragment;
-    }
 
+        return fragment;
+
+
+    }
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
+
+
+
+//public class Stuff extends Activity {
+//    Button submit_tip = (Button) findViewById(R.id.submit_tip);
+//    submit_tip.setOnClickListener(new View.OnClickListener() {
+//        public void onClick(View v) {
+//            Intent intent = new Intent(v.getContext(), SUBMIT_TIP.class);
+//            startActivityForResult(intent,0);
+//        }
 }
