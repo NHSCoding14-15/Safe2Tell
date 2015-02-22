@@ -40,7 +40,7 @@ public class CustomCard extends View {
     float paddingTop;
     float paddingBottom;
 
-    List textArray = new ArrayList();
+    String[] textArray;
 
     int width = 0;
     int height = 0;
@@ -81,11 +81,11 @@ public class CustomCard extends View {
         super.onDraw(canvas);
 
         //Draw Content Text
-        for (int i = 0; i < textArray.size(); i++) {
-            String text = (String) textArray.get(i);
+        for (int i = 0; i < textArray.length; i++) {
+            String text = (String) textArray[i];
             float posY = i * (mTextSize + 5) + textPosY;
             if (text != null) {
-                canvas.drawText(text, textPosX, posY, mTextPaint);
+                canvas.drawText((String)textArray[i], textPosX, posY, mTextPaint);
             }
         }
         //Draw Title Text
@@ -194,17 +194,17 @@ public class CustomCard extends View {
 
         //Dynamically Calculating the Height Based on The Content Text
         String tempText = "";
-        mText += " Safe2Tell";
-        String[] text = mText.split(" ");
+        char[] text = mText.toCharArray();
+        textArray = new String[(int) (mTextPaint.measureText(mText) / adjWidth) + 2];
         int position = -1;
 
         try {
             for (int i = 0; i < text.length; i++) {
-                String aText = text[i] + " ";
-                //tempText += aText;
-                /*int room = (int) (adjWidth - mTextPaint.measureText(tempText));
-                int size = adjWidth;
-                if ((room < size) && (aText == " ")) {
+                char aText = text[i];
+                tempText += aText;
+                int room = (int) (adjWidth - mTextPaint.measureText(tempText));
+                int size = (int) mTextPaint.measureText("_______");
+                if ((room < size) && (aText == ' ')) {
                     position++;
                     textArray[position] = tempText;
                     tempText = "";
@@ -216,7 +216,7 @@ public class CustomCard extends View {
                         tempText = "";
                         height += mTextSize + 5;
                     }
-                }*/
+                }/*
                 int testWidth = (int) mTextPaint.measureText(tempText + aText);
                 if (testWidth > adjWidth) {
                     position++;
@@ -230,7 +230,7 @@ public class CustomCard extends View {
                         textArray.add(tempText);
                         height += mTextSize + 5;
                     }
-                }
+                }*/
             }
         } catch (Exception e) {
             e.printStackTrace();

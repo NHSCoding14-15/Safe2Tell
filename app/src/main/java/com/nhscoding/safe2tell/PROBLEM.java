@@ -1,6 +1,7 @@
 package com.nhscoding.safe2tell;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -96,10 +97,17 @@ public class PROBLEM extends android.support.v4.app.Fragment {
 
         CustomCard[] dataset = null;
 
+        String[] array = getResources().getStringArray(R.array.problems);
+        for (int i = 0; i < array.length; i++) {
+            if (i == ID) {
+                name = array[i];
+                break;
+            }
+        }
+
         for (int i = 0; i < Problems.size(); i++) {
             ProblemObject entry = (ProblemObject) Problems.get(i);
-            String _name = entry.Name;
-            if (name.equals(_name)) {
+            if (name.equals(entry.Name)) {
                 ID = entry.ID;
                 break;
             }
@@ -109,24 +117,24 @@ public class PROBLEM extends android.support.v4.app.Fragment {
 
         for (int i = 0; i < Posts.size(); i++) {
             PostObject entry = (PostObject) Posts.get(i);
-            if (entry._ID == ID) {
+            if (entry._ProblemID == ID) {
                 count++;
             }
         }
 
         dataset = new CustomCard[count];
 
-        for (int data = 0; data < dataset.length; data++) {
+        int data = -1;
             for (int i = 0; i < Posts.size(); i++) {
                 PostObject entry = (PostObject) Posts.get(i);
-                if (entry._ID == ID) {
+                if (entry._ProblemID == ID) {
                     CustomCard card = new CustomCard(getActivity());
                     card.mText = entry._Text;
                     card.mTitleText = entry._Title;
+                    data++;
                     dataset[data] = card;
                 }
             }
-        }
 
         adapter = new CardAdapter(dataset, getActivity());
         mRecyclerView.setAdapter(adapter);
