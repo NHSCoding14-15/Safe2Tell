@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+
 /**
  * Created by davidkopala on 2/6/15.
  */
@@ -21,6 +23,8 @@ public class LEARN extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_learn, container, false);
@@ -28,19 +32,17 @@ public class LEARN extends Fragment {
     }
 
     @Override
-    public void onViewCreated (View rootView, Bundle savedInstanceState){
-        final Button btn= (Button) rootView.findViewById(R.id.subTip);
-        btn.setOnClickListener(new View.OnClickListener() {
-                                 @Override
-                                 public void onClick(View v) {
-                                     Intent intent = new Intent (v.getContext(),SUBMIT_TIP.class);
-                                     startActivityForResult(intent,0);
-                                 }
-                             }
+    public void onViewCreated (View view, Bundle savedInstanceState){
 
-        );
+        final FloatingActionButton subTip = (FloatingActionButton) view.findViewById(R.id.subTip);
+        subTip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(),SUBMIT_TIP.class);
+                startActivityForResult(intent,0);
+            }
+        });
     }
-
 
 
     public void onButtonPressed(Uri uri) {
