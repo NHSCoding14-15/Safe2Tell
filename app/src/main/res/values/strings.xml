@@ -14,6 +14,7 @@
     <color name="stor_back">#AA66CC</color>
     <color name="quiz_back">#99CC00</color>
     <color name="news_back">#FFBB33</color>
+    <color name="main_back">#FF4444</color>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="first_name">First Name</string>
@@ -22,6 +23,16 @@
     <string name="date">Date</string>
     <string name="submit_button">Submit</string>
     <string name="hello_blank_fragment">Dumb text</string>
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
 
     <string name="about">Safe2Tell® provides YOUNG people a way to report any threatening behaviors or activities endangering themselves or someone they know, in a way that keeps them safe and anonymous.
 
