@@ -91,43 +91,43 @@ public class MainActivity extends ActionBarActivity
                 break;
 
 
+//            case 2:
+//                place = 2;
+//                mTitle = "Learn";
+//                objFragment = new LEARN();
+//                break;
+//
+//            case 3:
+//                place = 3;
+//                mTitle = "Quiz";
+//                objFragment = new QUIZ();
+//                break;
+
             case 2:
                 place = 2;
                 mTitle = "Learn";
-                objFragment = new LEARN();
+                objFragment = new PROBLEM(0);
                 break;
 
             case 3:
                 place = 3;
-                mTitle = "Quiz";
-                objFragment = new QUIZ();
-                break;
-
-            case 4:
-                place = 4;
-                mTitle = "Problem";
-                objFragment = new PROBLEM(0);
-                break;
-
-            case 5:
-                place = 5;
                 mTitle = "Tip";
                 Intent intent = new Intent(this, SUBMIT_TIP.class);
                 startActivity(intent);
                 return;
 
-            case 6:
-                place = 6;
-                mTitle = "Card";
-                objFragment = new Card();
-                //updateRecycler();
-                break;
-
-            case 7:
-                place = 7;
-                mTitle = "View Pager";
-                objFragment = new ViewPagerTest();
-                break;
+//            case 6:
+//                place = 6;
+//                mTitle = "Card";
+//                objFragment = new Card();
+//                //updateRecycler();
+//                break;
+//
+//            case 7:
+//                place = 7;
+//                mTitle = "View Pager";
+//                objFragment = new ViewPagerTest();
+//                break;
 
             default:
                 place = -1;

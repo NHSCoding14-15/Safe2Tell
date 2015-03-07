@@ -1,6 +1,7 @@
 package com.nhscoding.safe2tell;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.nhscoding.safe2tell.API.PostObject;
 import com.nhscoding.safe2tell.API.PostParser;
 import com.nhscoding.safe2tell.API.ProblemObject;
@@ -41,12 +43,24 @@ public class STORIES extends Fragment {
     RecyclerView mRecyclerView;
     CardAdapter adapter;
 
+
+
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(layoutManager);
+        final FloatingActionButton subTip = (FloatingActionButton) view.findViewById(R.id.subTip);
+        subTip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(),SUBMIT_TIP.class);
+                startActivityForResult(intent,0);
+            }
+        });
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

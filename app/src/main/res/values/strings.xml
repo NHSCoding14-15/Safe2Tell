@@ -72,11 +72,9 @@ The body is smart. It goes on the defense when it’s being poisoned. For this r
         <item>Stories</item>
         <item>About Us</item>
         <item>Learn</item>
-        <item>Quiz</item>
-        <item>Problems</item>
         <item>Tip</item>
-        <item>Custom Card</item>
-        <item>View Pager</item>
+        <!--<item>Custom Card</item>-->
+        <!--<item>View Pager</item>-->
     </string-array>
 
     <string-array name="problems">
