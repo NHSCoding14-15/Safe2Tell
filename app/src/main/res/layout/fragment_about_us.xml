@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.nhscoding.safe2tell.ABOUT_US"
-    android:background="@color/lrn_back">
+    android:background="@color/main_back">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -31,8 +31,10 @@
                 android:layout_below="@+id/textView"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
-                android:textSize="30dp"
-                android:gravity="center"
+                android:textSize="20dp"
+                android:gravity="left"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:maxLines="60"
                 android:scrollbars="vertical"/>
 

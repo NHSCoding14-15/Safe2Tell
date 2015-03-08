@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lrn_back"
+    android:background="@color/main_back"
     android:layout_gravity="top"
     >
 
@@ -51,6 +51,18 @@
         android:text="@string/date"
         android:ems="10"
         android:id="@+id/date" />
+
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/expandableListView"
+        android:layout_gravity="center_horizontal" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="match_parent"

@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.nhscoding.safe2tell.API.PostObject;
 import com.nhscoding.safe2tell.API.PostParser;
 import com.nhscoding.safe2tell.API.ProblemObject;
@@ -142,12 +143,21 @@ public class PROBLEM extends android.support.v4.app.Fragment {
         return rootview;
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(layoutManager);
+        final FloatingActionButton subTip = (FloatingActionButton) view.findViewById(R.id.subTip);
+        subTip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(),SUBMIT_TIP.class);
+                startActivityForResult(intent,0);
+            }
+        });
 
 
     }
