@@ -101,6 +101,7 @@ public class ProblemParser extends AsyncTask<InputStream, InputStream, InputStre
             } else if(title.equals("Name")) {
                 name = reader.nextString();
                 name = name.replaceAll(" ", "");
+                name = name.replaceAll("13579", " ");
             } else {
                 reader.skipValue();
             }

@@ -35,39 +35,6 @@ The anonymity of all Safe2Tell reports is protected by C.R.S. 07-197.  This mean
 
 Now, using Safe2Tell®, they only have to make a call to make a difference.  By calling 1-877-542-7233 or submitting a tip through this web-site, young people can help anyone who is in trouble or prevent a tragedy.</string>
 
-    <string name="suicide">Why Do Teens Try to Kill Themselves?
-
-Most teens interviewed after making a suicide attempt say that they did it because they were trying to escape from a situation that seemed impossible to deal with or to get relief from really bad thoughts or feelings. Like Ethan, they didn’t want to die as much as they wanted to escape from what was going on. And at that particular moment dying seemed like the only way out.
-
-Some people who end their lives or attempt suicide might be trying to escape feelings of rejection, hurt, or loss. Others might be angry, ashamed, or guilty about something. Some people may be worried about disappointing friends or family members. And some may feel unwanted, unloved, victimized, or like they’re a burden to others.
-
-We all feel overwhelmed by difficult emotions or situations sometimes. But most people get through it or can put their problems in perspective and find a way to carry on with determination and hope. So why does one person try suicide when another person in the same tough situation does not? What makes some people more resilient (better able to deal with life’s setbacks and difficulties) than others? What makes a person unable to see another way out of a bad situation besides ending his or her life?
-
-The answer to those questions lies in the fact that most people who commit suicide have depression.</string>
-
-
-    <string name="drug_abuse">Thanks to medical and drug research, there are thousands of drugs that help people. Antibiotics and vaccines have revolutionized the treatment of infections. Medicines can lower blood pressure, treat diabetes, and reduce the body’s rejection of new organs. Medicines can cure, slow, or prevent disease, helping us to lead healthier and happier lives. But there are also lots of illegal, harmful drugs that people take to help them feel good or have a good time.
-
-How do drugs work? Drugs are chemicals or substances that change the way our bodies work. When you put them into your body (often by swallowing, inhaling, or injecting them), drugs find their way into your bloodstream and are transported to parts of your body, such as your brain. In the brain, drugs may either intensify or dull your senses, alter your sense of alertness, and sometimes decrease physical pain.
-
-A drug may be helpful or harmful. The effects of drugs can vary depending upon the kind of drug taken, how much is taken, how often it is used, how quickly it gets to the brain, and what other drugs, food, or substances are taken at the same time. Effects can also vary based on the differences in body size, shape, and chemistry.
-
-Although substances can feel good at first, they can ultimately do a lot of harm to the body and brain. Drinking alcohol, smoking tobacco, taking illegal drugs, and sniffing glue can all cause serious damage to the human body. Some drugs severely impair a person’s ability to make healthy choices and decisions. Teens who drink, for example, are more likely to get involved in dangerous situations, such as driving under the influence or having unprotected sex.
-
-And just as there are many kinds of drugs available, there are as many reasons for trying them or starting to use them regularly. People take drugs just for the pleasure they believe they can bring. Often it’s because someone tried to convince them that drugs would make them feel good or that they’d have a better time if they took them.
-
-Some teens believe drugs will help them think better, be more popular, stay more active, or become better athletes. Others are simply curious and figure one try won’t hurt. Others want to fit in. A few use drugs to gain attention from their parents.
-
-Many teens use drugs because they’re depressed or think drugs will help them escape their problems. The truth is, drugs don’t solve problems — they simply hide feelings and problems. When a drug wears off, the feelings and problems remain, or become worse. Drugs can ruin every aspect of a person’s life.[1]</string>
-<string name="smoking">Smoking is a hard habit to break because tobacco contains nicotine, which is highly addictive. Like heroin or other addictive drugs, the body and mind quickly become so used to the nicotine in cigarettes that a person needs to have it just to feel normal.
-
-People start smoking for a variety of different reasons. Some think it looks cool. Others start because their family members or friends smoke. Statistics show that about 9 out of 10 tobacco users start before they’re 18 years old. Most adults who started smoking in their teens never expected to become addicted. That’s why people say it’s just so much easier to not start smoking at all.
-
-How Smoking Affects Your Health
-
-There are no physical reasons to start smoking. The body doesn’t need tobacco the way it needs food, water, sleep, and exercise. In fact, many of the chemicals in cigarettes, like nicotine and cyanide, are actually poisons that can kill in high enough doses.
-
-The body is smart. It goes on the defense when it’s being poisoned. For this reason, many people find it takes several tries to get started smoking: First-time smokers often feel pain or burning in the throat and lungs, and some people feel sick or even throw up the first few times they try tobacco.</string>
     <string-array name="drawerFields">
         <item>Stories</item>
         <item>About Us</item>
@@ -80,8 +47,6 @@ The body is smart. It goes on the defense when it’s being poisoned. For this r
     <string-array name="problems">
         <item>Suicide</item>
         <item>Drug Abuse</item>
-        <item>Smoking</item>
-        <item>Test</item>
     </string-array>
 
 
@@ -89,13 +54,6 @@ The body is smart. It goes on the defense when it’s being poisoned. For this r
     <string name="hello_world">Hello world!</string>
     <color name="fab_back">#FFFF00</color>
     <color name="fab_pressed_back">#CCCC00</color>
-
-    <string name="test">test</string>
-    <string name="card1_title">New Safe2Tell App to be released soon!</string>
-    <string name="card2_title">Did you know: One in every two students is a victim of Cyber-Bullying?</string>
-    <string name="card3_title">Bullying stops in less than 10 seconds when a peer intervenes on the behalf of the victim!</string>
-    <string name="card4_title">1 in 5 K-12 students is a victim of bullying!</string>
-    <string name="card5_title">Help stop suicides, learn these life-saving tips!</string>
 
     <color name="custom_card_bkg">#ffffff</color>
 

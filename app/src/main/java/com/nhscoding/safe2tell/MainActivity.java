@@ -23,11 +23,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 
 import java.lang.reflect.Array;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity
@@ -90,19 +92,6 @@ public class MainActivity extends ActionBarActivity
                 place = 1;
                 break;
 
-
-//            case 2:
-//                place = 2;
-//                mTitle = "Learn";
-//                objFragment = new LEARN();
-//                break;
-//
-//            case 3:
-//                place = 3;
-//                mTitle = "Quiz";
-//                objFragment = new QUIZ();
-//                break;
-
             case 2:
                 place = 2;
                 mTitle = "Learn";
@@ -115,19 +104,6 @@ public class MainActivity extends ActionBarActivity
                 Intent intent = new Intent(this, SUBMIT_TIP.class);
                 startActivity(intent);
                 return;
-
-//            case 6:
-//                place = 6;
-//                mTitle = "Card";
-//                objFragment = new Card();
-//                //updateRecycler();
-//                break;
-//
-//            case 7:
-//                place = 7;
-//                mTitle = "View Pager";
-//                objFragment = new ViewPagerTest();
-//                break;
 
             default:
                 place = -1;
@@ -150,7 +126,7 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void restoreActionBar() {
-        if (place != 4) {
+        if (place != 2) {
             ActionBar actionBar = getSupportActionBar();
             actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
             actionBar.setDisplayShowTitleEnabled(true);
