@@ -72,14 +72,14 @@ public class LogoParser extends AsyncTask<InputStream, InputStream, InputStream>
     }
 
     public List readProblemArray(JsonReader reader) throws IOException {
-        List problems = new ArrayList();
+        List problem = new ArrayList();
 
         reader.beginArray();
         while (reader.hasNext()) {
-            problems.add(readSection(reader));
+            problem.add(readSection(reader));
         }
         reader.endArray();
-        return problems;
+        return problem;
     }
 
     public LogoObject readSection(JsonReader reader) throws IOException {
