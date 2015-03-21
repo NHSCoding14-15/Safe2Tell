@@ -8,6 +8,9 @@ import android.app.Fragment;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.app.ActionBar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -59,6 +62,10 @@ public class PROBLEM extends android.support.v4.app.Fragment {
     List Problems = new ArrayList();
     List Posts = new ArrayList();
 
+    ViewPager viewPager;
+    PagerAdapter pagerAdapter;
+
+
     public PROBLEM(int i) {
         ID = i;
     }
@@ -67,7 +74,7 @@ public class PROBLEM extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_problem, container, false);
 
-        mRecyclerView = (RecyclerView) rootview.findViewById(R.id.problemRecycler);
+        //mRecyclerView = (RecyclerView) rootview.findViewById(R.id.problemRecycler);
 
         postParser = new PostParser();
         postParser.execute();
@@ -137,8 +144,12 @@ public class PROBLEM extends android.support.v4.app.Fragment {
                 }
             }
 
-        adapter = new CardAdapter(dataset, getActivity());
-        mRecyclerView.setAdapter(adapter);
+        //adapter = new CardAdapter(dataset, getActivity());
+        //mRecyclerView.setAdapter(adapter);
+
+        viewPager = (ViewPager) rootview.findViewById(R.id.problemPager);
+        pagerAdapter = new PagerAdapter(getFragmentManager(), ID);
+        viewPager.setAdapter(pagerAdapter);
 
         return rootview;
     }
@@ -149,7 +160,7 @@ public class PROBLEM extends android.support.v4.app.Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerView.setLayoutManager(layoutManager);
+        //mRecyclerView.setLayoutManager(layoutManager);
         final FloatingActionButton subTip = (FloatingActionButton) view.findViewById(R.id.subTip);
         subTip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,6 +206,39 @@ public class PROBLEM extends android.support.v4.app.Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    public class PagerAdapter extends FragmentStatePagerAdapter {
+
+        int _ID;
+
+        public PagerAdapter(FragmentManager fm, int ID) {
+            super(fm);
+            _ID = ID;
+        }
+
+        @Override
+        public android.support.v4.app.Fragment getItem(int i) {
+            android.support.v4.app.Fragment frag = null;
+            switch (i) {
+                case 0:
+                    frag = new LEARN();
+                    break;
+
+                case 1:
+                    frag = new QUIZ();
+                    break;
+
+                default:
+                    frag = new LEARN();
+            }
+            return frag;
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
     }
 
 }

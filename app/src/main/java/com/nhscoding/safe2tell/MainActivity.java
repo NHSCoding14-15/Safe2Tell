@@ -129,7 +129,7 @@ public class MainActivity extends ActionBarActivity
             actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setTitle(mTitle);
-        } else if(place == 2){
+        } else if (place == 4) {
             SpinnerAdapter adapter =
                     ArrayAdapter.createFromResource(getApplicationContext(), R.array.problems,
                             android.R.layout.simple_spinner_dropdown_item);
@@ -162,7 +162,7 @@ public class MainActivity extends ActionBarActivity
                 @Override
                 public boolean onNavigationItemSelected(int i, long l) {
                     String[] array = getResources().getStringArray(R.array.problems);
-                    Fragment frag = new ViewPager01(array[i]);
+                    Fragment frag = new PROBLEM(i);
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction()
                             .replace(R.id.container, frag)
