@@ -8,14 +8,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,20 +19,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.SpinnerAdapter;
-import android.widget.TextView;
-
-
-import java.lang.reflect.Array;
-import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
         STORIES.OnFragmentInteractionListener,
         Card.OnFragmentInteractionListener,
-        ViewPagerTest.OnFragmentInteractionListener{
+        ViewPagerTest.OnFragmentInteractionListener,
+        ViewPager01.OnFragmentInteractionListener,
+        Text.OnFragmentInteractionListener{
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -105,6 +97,12 @@ public class MainActivity extends ActionBarActivity
                 startActivity(intent);
                 return;
 
+            case 4:
+                place = 4;
+                mTitle = "Testing";
+                objFragment = new ViewPager01();
+                break;
+
             default:
                 place = -1;
                 mTitle = "ERROR";
@@ -126,12 +124,12 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void restoreActionBar() {
-        if (place != 2) {
+        if ((place != 2) && (place != 4)) {
             ActionBar actionBar = getSupportActionBar();
             actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setTitle(mTitle);
-        } else {
+        } else if(place == 2){
             SpinnerAdapter adapter =
                     ArrayAdapter.createFromResource(getApplicationContext(), R.array.problems,
                             android.R.layout.simple_spinner_dropdown_item);
@@ -158,6 +156,26 @@ public class MainActivity extends ActionBarActivity
             actionBar.setDisplayShowTitleEnabled(false);
             actionBar.setListNavigationCallbacks(adapter, callback);
             mTitle = "Problem";
+        } else {
+            SpinnerAdapter adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.problems, android.R.layout.simple_spinner_dropdown_item);
+            ActionBar.OnNavigationListener callback = new ActionBar.OnNavigationListener() {
+                @Override
+                public boolean onNavigationItemSelected(int i, long l) {
+                    String[] array = getResources().getStringArray(R.array.problems);
+                    Fragment frag = new ViewPager01(array[i]);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, frag)
+                            .commit();
+                    return true;
+                }
+            };
+            ActionBar actionBar = getSupportActionBar();
+            int a = actionBar.NAVIGATION_MODE_LIST;
+            actionBar.setNavigationMode(a);
+            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setListNavigationCallbacks(adapter, callback);
+            mTitle = "Testing";
         }
     }
 

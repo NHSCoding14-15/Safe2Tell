@@ -52,7 +52,7 @@ Now, using Safe2Tell®, they only have to make a call to make a difference.  By 
         <item>Learn</item>
         <item>Tip</item>
         <!--<item>Custom Card</item>-->
-        <!--<item>View Pager</item>-->
+        <item>View Pager</item>
     </string-array>
 
     <string-array name="problems">
