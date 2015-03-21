@@ -38,9 +38,7 @@ public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
         STORIES.OnFragmentInteractionListener,
         Card.OnFragmentInteractionListener,
-        ViewPagerTest.OnFragmentInteractionListener,
-        ViewPager01.OnFragmentInteractionListener,
-        Text.OnFragmentInteractionListener{
+        ViewPagerTest.OnFragmentInteractionListener {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -175,11 +173,8 @@ public class MainActivity extends ActionBarActivity
 
             ActionBar.OnNavigationListener callback = new ActionBar.OnNavigationListener() {
 
-                String[] items = getResources().getStringArray(R.array.problems);
-
                 @Override
                 public boolean onNavigationItemSelected(int i, long l) {
-                    Log.i("Navigation Item Selected", items[i]);
                     Fragment frag = new PROBLEM(i);
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction()
