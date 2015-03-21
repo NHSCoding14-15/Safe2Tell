@@ -51,8 +51,6 @@ Now, using Safe2Tell®, they only have to make a call to make a difference.  By 
         <item>About Us</item>
         <item>Learn</item>
         <item>Tip</item>
-        <!--<item>Custom Card</item>-->
-        <item>View Pager</item>
     </string-array>
 
     <string-array name="problems">
@@ -67,7 +65,6 @@ Now, using Safe2Tell®, they only have to make a call to make a difference.  By 
     <color name="fab_pressed_back">#CCCC00</color>
 
     <color name="custom_card_bkg">#ffffff</color>
-
 
 
 </resources>

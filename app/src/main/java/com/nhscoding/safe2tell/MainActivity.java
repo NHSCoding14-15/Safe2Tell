@@ -4,6 +4,7 @@ package com.nhscoding.safe2tell;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,17 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
+
+import com.nhscoding.safe2tell.API.PostParser;
+import com.nhscoding.safe2tell.API.ProblemObject;
+import com.nhscoding.safe2tell.API.ProblemParser;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 
 public class MainActivity extends ActionBarActivity
@@ -46,6 +58,9 @@ public class MainActivity extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+
+    List Posts;
+    List Problems;
 
 
     @Override
@@ -76,8 +91,6 @@ public class MainActivity extends ActionBarActivity
                 objFragment = new STORIES();
                 break;
 
-
-
             case 1:
                 objFragment = new ABOUT_US();
                 mTitle = "About Us";
@@ -96,12 +109,6 @@ public class MainActivity extends ActionBarActivity
                 Intent intent = new Intent(this, SUBMIT_TIP.class);
                 startActivity(intent);
                 return;
-
-            case 4:
-                place = 4;
-                mTitle = "Testing";
-                objFragment = new ViewPager01();
-                break;
 
             default:
                 place = -1;
@@ -129,10 +136,42 @@ public class MainActivity extends ActionBarActivity
             actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setTitle(mTitle);
-        } else if (place == 4) {
-            SpinnerAdapter adapter =
-                    ArrayAdapter.createFromResource(getApplicationContext(), R.array.problems,
-                            android.R.layout.simple_spinner_dropdown_item);
+        } else {
+            PostParser postParser = new PostParser();
+            postParser.execute();
+            InputStream postIn;
+
+            ProblemParser problemParser = new ProblemParser();
+            problemParser.execute();
+            InputStream problemIn;
+
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+            try {
+                postIn = postParser.get(5000, TimeUnit.MILLISECONDS);
+                Posts = postParser.readJSONStream(postIn);
+
+                problemIn = problemParser.get(5000, TimeUnit.MILLISECONDS);
+                Problems = problemParser.readJSONStream(problemIn);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (TimeoutException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            String[] problemArray = new String[Problems.size()];
+
+            for (int i = 0; i < Problems.size(); i++) {
+                ProblemObject problemObject = (ProblemObject) Problems.get(i);
+                problemArray[i] = problemObject.Name;
+            }
+
+            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, problemArray);
 
             ActionBar.OnNavigationListener callback = new ActionBar.OnNavigationListener() {
 
@@ -154,28 +193,8 @@ public class MainActivity extends ActionBarActivity
             int a = actionBar.NAVIGATION_MODE_LIST;
             actionBar.setNavigationMode(a);
             actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setListNavigationCallbacks(adapter, callback);
+            actionBar.setListNavigationCallbacks(arrayAdapter, callback);
             mTitle = "Problem";
-        } else {
-            SpinnerAdapter adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.problems, android.R.layout.simple_spinner_dropdown_item);
-            ActionBar.OnNavigationListener callback = new ActionBar.OnNavigationListener() {
-                @Override
-                public boolean onNavigationItemSelected(int i, long l) {
-                    String[] array = getResources().getStringArray(R.array.problems);
-                    Fragment frag = new PROBLEM(i);
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.container, frag)
-                            .commit();
-                    return true;
-                }
-            };
-            ActionBar actionBar = getSupportActionBar();
-            int a = actionBar.NAVIGATION_MODE_LIST;
-            actionBar.setNavigationMode(a);
-            actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setListNavigationCallbacks(adapter, callback);
-            mTitle = "Testing";
         }
     }
 
