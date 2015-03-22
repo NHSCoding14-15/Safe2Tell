@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="bottom">
+
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/subTip"
             android:layout_width="wrap_content"
@@ -25,10 +26,7 @@
             fab:fab_colorPressed="@color/fab_pressed_back"
             android:layout_gravity="right"
             android:layout_marginBottom="@dimen/fab_margin_bottom"
-            android:layout_marginRight="@dimen/fab_margin_right"/>
+            android:layout_marginRight="@dimen/fab_margin_right" />
     </LinearLayout>
-
-
-
 
 </RelativeLayout>

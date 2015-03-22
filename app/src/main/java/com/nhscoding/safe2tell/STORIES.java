@@ -1,7 +1,10 @@
 package com.nhscoding.safe2tell;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -43,9 +46,6 @@ public class STORIES extends Fragment {
     RecyclerView mRecyclerView;
     CardAdapter adapter;
 
-
-
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -65,6 +65,7 @@ public class STORIES extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_stories, container, false);
+
 
         mRecyclerView = (RecyclerView) rootview.findViewById(R.id.storiesRecycler);
 

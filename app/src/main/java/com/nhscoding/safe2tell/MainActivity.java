@@ -2,7 +2,14 @@ package com.nhscoding.safe2tell;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -61,11 +68,22 @@ public class MainActivity extends ActionBarActivity
     List Posts;
     List Problems;
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (!isNetworkAvailable()) {
+            DialogFragment frag = new InternetAlert();
+            frag.show(getFragmentManager(), "No Internet");
+        }
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -264,6 +282,22 @@ public class MainActivity extends ActionBarActivity
         public void onAttach(Activity activity) {
             super.onAttach(activity);
             //((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
+        }
+    }
+
+    public class InternetAlert extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("Safe 2 Tell Requires An Internet Connection To Run. Please Connect To The Internet")
+                    .setTitle("No Internet Connection")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+            return builder.create();
         }
     }
 
