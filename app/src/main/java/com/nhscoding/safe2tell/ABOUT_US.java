@@ -5,6 +5,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +18,13 @@ import com.nhscoding.safe2tell.API.PostParser;
 /**
  * Created by davidkopala on 2/6/15.
  */
-public class ABOUT_US extends Fragment {
+public class ABOUT_US extends Fragment implements
+        About.OnFragmentInteractionListener {
 
     View rootview;
+
+    VerticalViewPager viewPager;
+    PagerAdapter adapter;
 
     private OnFragmentInteractionListener mListener;
     @Override
@@ -36,8 +43,9 @@ public class ABOUT_US extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_about_us, container, false);
-        PostParser parser = new PostParser();
-        parser.execute();
+        viewPager = (VerticalViewPager) rootview.findViewById(R.id.aboutPager);
+        adapter = new PagerAdapter(getFragmentManager());
+        viewPager.setAdapter(adapter);
         return rootview;
     }
 
@@ -65,8 +73,33 @@ public class ABOUT_US extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    public class PagerAdapter extends FragmentStatePagerAdapter {
+
+        FragmentManager manager;
+
+        public PagerAdapter(FragmentManager fm) {
+            super(fm);
+            manager = fm;
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            return new About(i);
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
     }
 }

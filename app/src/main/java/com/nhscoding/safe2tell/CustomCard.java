@@ -122,33 +122,13 @@ public class CustomCard extends View {
             String text = (String) textArray[i];
             float posY = i * (mTextSize + 5) + textPosY;
             if (text != null) {
-                canvas.drawText((String)textArray[i], textPosX, posY, mTextPaint);
+                canvas.drawText((String) textArray[i], textPosX, posY, mTextPaint);
             }
         }
         //Draw Title Text
         canvas.drawText(mTitleText, titlePosX, titlePosY, mTitlePaint);
         //Underline Title
         canvas.drawLine(titlePosX, titlePosY + 10, getWidth() - 50, titlePosY + 10, mLinePaint);
-    }
-
-    private void drawArrows(Point[] point, Canvas canvas, Paint paint) {
-
-        float[] points = new float[8];
-        points[0] = point[0].x;
-        points[1] = point[0].y;
-        points[2] = point[1].x;
-        points[3] = point[1].y;
-        points[4] = point[2].x;
-        points[5] = point[2].y;
-        points[6] = point[0].x;
-        points[7] = point[0].y;
-
-        canvas.drawVertices(Canvas.VertexMode.TRIANGLES, 8, points, 0, null, 0, null, 0, null, 0, 0, paint);
-        Path path = new Path();
-        path.moveTo(point[0].x, point[0].y);
-        path.lineTo(point[1].x, point[1].y);
-        path.lineTo(point[2].x, point[2].y);
-        canvas.drawPath(path, paint);
     }
 
     public CustomCard(Context context) {
@@ -267,7 +247,7 @@ public class CustomCard extends View {
                     tempText = "";
                     height += mTextSize + 5;
                 } else {
-                    if((i + 1) == text.length) {
+                    if ((i + 1) == text.length) {
                         position++;
                         textArray[position] = tempText;
                         tempText = "";

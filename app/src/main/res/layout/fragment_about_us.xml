@@ -4,46 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.nhscoding.safe2tell.ABOUT_US"
-    android:background="@color/main_back">
-    <ScrollView
+    android:background="#000000">
+
+    <com.nhscoding.safe2tell.VerticalViewPager
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Who we are"
-                android:id="@+id/textView"
-                android:layout_gravity="center_horizontal|top"
-                android:gravity="center"
-                android:textSize="45dp"/>
+        android:layout_height="match_parent"
+        android:id="@+id/aboutPager" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/about"
-                android:id="@+id/textView2"
-                android:layout_below="@+id/textView"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:textSize="20dp"
-                android:gravity="left"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:maxLines="60"
-                android:scrollbars="vertical"/>
-
-
-        </LinearLayout>
-
-        </ScrollView>
-
-    <!-- TODO: Scrollbar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

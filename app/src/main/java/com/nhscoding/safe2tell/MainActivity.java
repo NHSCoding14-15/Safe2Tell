@@ -38,7 +38,8 @@ public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
         STORIES.OnFragmentInteractionListener,
         Card.OnFragmentInteractionListener,
-        ViewPagerTest.OnFragmentInteractionListener {
+        ViewPagerTest.OnFragmentInteractionListener,
+        About.OnFragmentInteractionListener {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
