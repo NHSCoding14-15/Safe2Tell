@@ -5,6 +5,8 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -46,11 +48,17 @@ public class CustomCard extends View {
     int height = 0;
 
     Paint mLinePaint;
+    Paint bgPaint;
+
+    int triangleSize = 40;
+
+    int bgColor;
 
     public CustomCard(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        setBackgroundColor(Color.parseColor("#ffffff"));
+        //Leave Transparent
+        //setBackgroundColor(Color.parseColor("#ffffff"));
 
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
@@ -61,7 +69,7 @@ public class CustomCard extends View {
         try {
             //Get Values From The XML File
             mText = a.getString(R.styleable.CustomCardView_txt);
-            mTextColor = a.getInt(R.styleable.CustomCardView_txtColor, /*Default Value*/0xff000000);
+            mTextColor = a.getInt(R.styleable.CustomCardView_txtColor, /*Default Value*/Color.parseColor("#000000"));
             mTextSize = a.getDimension(R.styleable.CustomCardView_txtSize, 0.0f);
 
             mTitleText = a.getString(R.styleable.CustomCardView_titleTxt);
@@ -70,6 +78,8 @@ public class CustomCard extends View {
             logoType = a.getInt(R.styleable.CustomCardView_logoType, -1);
             mLogoString = a.getString(R.styleable.CustomCardView_logoLocation);
             mLogoDrawable = a.getDrawable(R.styleable.CustomCardView_logoDrawable);
+
+            bgColor = a.getColor(R.styleable.CustomCardView_bgColor, Color.parseColor("#FFFBA8"));
         } finally {
             a.recycle();
         }
@@ -79,6 +89,33 @@ public class CustomCard extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        canvas.drawRect(0, 0, getWidth(), getHeight() - triangleSize, bgPaint);
+        Point[] points = new Point[4];
+        //Upper Left
+        points[0] = new Point();
+        points[0].x = getWidth() - triangleSize;        //X
+        points[0].y = getHeight() - triangleSize;       //Y
+        //Upper Right
+        points[1] = new Point();
+        points[1].x = getWidth();
+        points[1].y = getHeight() - triangleSize;
+        //Bottom Right
+        points[2] = new Point();
+        points[2].x = getWidth();
+        points[2].y = getHeight();
+        //Return To Start; Close It
+        points[3] = new Point();
+        points[3].x = getWidth() - triangleSize;
+        points[3].y = getHeight() - triangleSize;
+
+        Path path = new Path();
+        path.moveTo(points[0].x, points[0].y);
+        path.lineTo(points[1].x, points[1].y);
+        path.lineTo(points[2].x, points[2].y);
+        path.lineTo(points[3].x, points[3].y);
+        path.close();
+        canvas.drawPath(path, bgPaint);
 
         //Draw Content Text
         for (int i = 0; i < textArray.length; i++) {
@@ -91,7 +128,27 @@ public class CustomCard extends View {
         //Draw Title Text
         canvas.drawText(mTitleText, titlePosX, titlePosY, mTitlePaint);
         //Underline Title
-//        canvas.drawLine(titlePosX, titlePosY + 10, getWidth() - 50, titlePosY + 10, mLinePaint);
+        canvas.drawLine(titlePosX, titlePosY + 10, getWidth() - 50, titlePosY + 10, mLinePaint);
+    }
+
+    private void drawArrows(Point[] point, Canvas canvas, Paint paint) {
+
+        float[] points = new float[8];
+        points[0] = point[0].x;
+        points[1] = point[0].y;
+        points[2] = point[1].x;
+        points[3] = point[1].y;
+        points[4] = point[2].x;
+        points[5] = point[2].y;
+        points[6] = point[0].x;
+        points[7] = point[0].y;
+
+        canvas.drawVertices(Canvas.VertexMode.TRIANGLES, 8, points, 0, null, 0, null, 0, null, 0, 0, paint);
+        Path path = new Path();
+        path.moveTo(point[0].x, point[0].y);
+        path.lineTo(point[1].x, point[1].y);
+        path.lineTo(point[2].x, point[2].y);
+        canvas.drawPath(path, paint);
     }
 
     public CustomCard(Context context) {
@@ -239,7 +296,7 @@ public class CustomCard extends View {
         //Add Padding To The Width
         width = width + (getPaddingLeft() + getPaddingRight());
         //Add Padding And Title To The Height
-        height = (int) ((height) + (mTitleSize) + 40 + getPaddingBottom() + getPaddingTop());
+        height = (int) ((height) + (mTitleSize) + 40 + getPaddingBottom() + getPaddingTop()) + triangleSize;
 
         //Update The Height And Width
         //This is what directly sets the dimensions
@@ -279,5 +336,8 @@ public class CustomCard extends View {
         //Set Underline Properties
         mLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mLinePaint.setColor(getResources().getColor(R.color.material_blue_grey_800));
+
+        bgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        bgPaint.setColor(bgColor);
     }
 }

@@ -35,15 +35,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PROBLEM.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PROBLEM#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PROBLEM extends android.support.v4.app.Fragment {
     View rootview;
 
@@ -74,12 +65,6 @@ public class PROBLEM extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_problem, container, false);
 
-        //mRecyclerView = (RecyclerView) rootview.findViewById(R.id.problemRecycler);
-
-        postParser = new PostParser();
-        postParser.execute();
-        InputStream postIn;
-
         problemParser = new ProblemParser();
         problemParser.execute();
         InputStream problemIn;
@@ -88,9 +73,6 @@ public class PROBLEM extends android.support.v4.app.Fragment {
         StrictMode.setThreadPolicy(policy);
 
         try {
-            postIn = postParser.get(5000, TimeUnit.MILLISECONDS);
-            Posts = postParser.readJSONStream(postIn);
-
             problemIn = problemParser.get(5000, TimeUnit.MILLISECONDS);
             Problems = problemParser.readJSONStream(problemIn);
         } catch (InterruptedException e) {
@@ -103,7 +85,7 @@ public class PROBLEM extends android.support.v4.app.Fragment {
             e.printStackTrace();
         }
 
-        CustomCard[] dataset = null;
+        /*CustomCard[] dataset = null;
 
         String[] array = getResources().getStringArray(R.array.problems);
         for (int i = 0; i < array.length; i++) {
@@ -120,6 +102,7 @@ public class PROBLEM extends android.support.v4.app.Fragment {
                 break;
             }
         }
+
 
         int count = 0;
 
@@ -146,6 +129,7 @@ public class PROBLEM extends android.support.v4.app.Fragment {
 
         //adapter = new CardAdapter(dataset, getActivity());
         //mRecyclerView.setAdapter(adapter);
+        */
 
         viewPager = (ViewPager) rootview.findViewById(R.id.problemPager);
         pagerAdapter = new PagerAdapter(getFragmentManager(), ID);
@@ -244,7 +228,7 @@ public class PROBLEM extends android.support.v4.app.Fragment {
 
     public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
         private static final float MIN_SCALE = 0.85f;
-        private static final float MIN_ALPHA = 0.5f;
+        private static final float MIN_ALPHA = 1.0f;
 
         public void transformPage(View view, float position) {
             int pageWidth = view.getWidth();

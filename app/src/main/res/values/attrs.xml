@@ -18,6 +18,6 @@
         <attr name="logoLocation" format="string"/>
         <attr name="titleSize" format="dimension"/>
         <attr name="txtSize" format="dimension"/>
-        <attr name="bgColor" format="reference"/>
+        <attr name="bgColor" format="color" />
     </declare-styleable>
 </resources>
