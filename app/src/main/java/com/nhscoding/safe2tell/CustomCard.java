@@ -50,7 +50,7 @@ public class CustomCard extends View {
     Paint mLinePaint;
     Paint bgPaint;
 
-    int triangleSize = 40;
+    int triangleSize = 80;
 
     int bgColor;
 
@@ -94,19 +94,19 @@ public class CustomCard extends View {
         Point[] points = new Point[4];
         //Upper Left
         points[0] = new Point();
-        points[0].x = getWidth() - triangleSize - 25;        //X
+        points[0].x = getWidth() - triangleSize - triangleSize;        //X
         points[0].y = getHeight() - triangleSize;       //Y
         //Upper Right
         points[1] = new Point();
-        points[1].x = getWidth() - 25;
+        points[1].x = getWidth() - triangleSize;
         points[1].y = getHeight() - triangleSize;
         //Bottom Right
         points[2] = new Point();
-        points[2].x = getWidth() - 25;
+        points[2].x = getWidth() - triangleSize;
         points[2].y = getHeight();
         //Return To Start; Close It
         points[3] = new Point();
-        points[3].x = getWidth() - triangleSize - 25;
+        points[3].x = getWidth() - triangleSize - triangleSize;
         points[3].y = getHeight() - triangleSize;
 
         Path path = new Path();
