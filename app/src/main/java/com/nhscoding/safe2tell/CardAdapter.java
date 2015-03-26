@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 /**
@@ -17,6 +19,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     public static Context mContext;
 
     private CustomCard[] dataset;
+
+    int lastPosition = -1;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private CustomCard card = new CustomCard(mContext);
@@ -66,7 +70,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         //viewHolder.getCard().setTextSize(dataset[i].getTextSize());
         //viewHolder.getCard().setTitleSize(dataset[i].getTitleSize());
         //viewHolder.getCard().setPadding(0, 15, 0, 10);
+        setAnimation(viewHolder.getCard(), i);
         return;
+    }
+
+    private void setAnimation(View viewToAnimate, int position) {
+        if (position > lastPosition) {
+            Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
     }
 
     @Override

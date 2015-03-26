@@ -58,6 +58,7 @@ public class PROBLEM extends android.support.v4.app.Fragment {
 
 
     public PROBLEM(int i) {
+        Log.i("PROBLEM", "Problem ID = " + i);
         ID = i;
     }
 
@@ -65,16 +66,16 @@ public class PROBLEM extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_problem, container, false);
 
-        problemParser = new ProblemParser();
-        problemParser.execute();
-        InputStream problemIn;
+        /*postParser = new PostParser();
+        postParser.execute();
+        InputStream postIn;
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         try {
-            problemIn = problemParser.get(5000, TimeUnit.MILLISECONDS);
-            Problems = problemParser.readJSONStream(problemIn);
+            postIn = postParser.get(5000, TimeUnit.MILLISECONDS);
+            Posts = postParser.readJSONStream(postIn);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -85,9 +86,35 @@ public class PROBLEM extends android.support.v4.app.Fragment {
             e.printStackTrace();
         }
 
-        /*CustomCard[] dataset = null;
+        List datalist = new ArrayList();
 
-        String[] array = getResources().getStringArray(R.array.problems);
+        if (ID > 0) {
+            for (int i = 0; i < Posts.size(); i++) {
+                PostObject post = (PostObject) Posts.get(i);
+                if (post._ProblemID == ID) {
+                    datalist.add(post);
+                }
+            }
+        } else {
+            datalist = Posts;
+        }
+
+        CustomCard[] dataset = new CustomCard[datalist.size()];
+
+        for (int i = 0; i < datalist.size(); i++) {
+            PostObject post = (PostObject) datalist.get(i);
+            CustomCard card = new CustomCard(getActivity());
+            card.setTitle(post._Title);
+            card.setText(post._Text);
+            dataset[i] = card;
+        }
+
+        /*adapter = new CardAdapter(dataset, getActivity());
+        mRecyclerView = (RecyclerView) rootview.findViewById(R.id.learnRecycler);
+        mRecyclerView.setAdapter(adapter);*/
+
+        /*
+
         for (int i = 0; i < array.length; i++) {
             if (i == ID) {
                 name = array[i];
@@ -184,7 +211,7 @@ public class PROBLEM extends android.support.v4.app.Fragment {
     }
 
     public static PROBLEM newInstance(int i) {
-        PROBLEM fragment = new PROBLEM(-1);
+        PROBLEM fragment = new PROBLEM(i);
         return fragment;
     }
 
@@ -205,9 +232,10 @@ public class PROBLEM extends android.support.v4.app.Fragment {
         @Override
         public android.support.v4.app.Fragment getItem(int i) {
             android.support.v4.app.Fragment frag = null;
+            Log.i("PagerAdapter", "PagerAdapter _ID = " + _ID);
             switch (i) {
                 case 0:
-                    frag = new LEARN();
+                    frag = new LEARN(_ID);
                     break;
 
                 case 1:
@@ -215,7 +243,7 @@ public class PROBLEM extends android.support.v4.app.Fragment {
                     break;
 
                 default:
-                    frag = new LEARN();
+                    frag = new LEARN(_ID);
             }
             return frag;
         }

@@ -117,7 +117,7 @@ public class MainActivity extends ActionBarActivity
             case 2:
                 place = 2;
                 mTitle = "Learn";
-                objFragment = new PROBLEM(0);
+                objFragment = new PROBLEM(-1);
                 break;
 
             case 3:
@@ -194,7 +194,9 @@ public class MainActivity extends ActionBarActivity
 
                 @Override
                 public boolean onNavigationItemSelected(int i, long l) {
-                    Fragment frag = new PROBLEM(i);
+                    Log.i("MainActivity", "Navigation Index: " + i);
+                    ProblemObject problem = (ProblemObject) Problems.get(i);
+                    Fragment frag = new PROBLEM(problem.ID);
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction()
                             .replace(R.id.container, frag)
@@ -289,7 +291,7 @@ public class MainActivity extends ActionBarActivity
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage("Safe 2 Tell Requires An Internet Connection To Run. Please Connect To The Internet")
+            builder.setMessage("Safe 2 Tell Requires An Internet Connection To Run. Please Connect To The Internet.")
                     .setTitle("No Internet Connection")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
@@ -298,6 +300,7 @@ public class MainActivity extends ActionBarActivity
                         }
                     });
             return builder.create();
+            //return super.onCreateDialog(savedInstanceState);
         }
     }
 

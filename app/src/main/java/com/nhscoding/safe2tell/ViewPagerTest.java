@@ -105,7 +105,7 @@ public class ViewPagerTest extends android.support.v4.app.Fragment
         public android.support.v4.app.Fragment getItem(int num) {
             android.support.v4.app.Fragment objFragment;
             if (num == 0) {
-                objFragment = new LEARN();
+                objFragment = new LEARN(-1);
             } else {
                 objFragment = new QUIZ();
             }
