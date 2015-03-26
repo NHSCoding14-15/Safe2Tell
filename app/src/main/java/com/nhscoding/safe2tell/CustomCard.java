@@ -50,7 +50,7 @@ public class CustomCard extends View {
     Paint mLinePaint;
     Paint bgPaint;
 
-    int triangleSize = 80;
+    int triangleSize = 50;
 
     int bgColor;
 
@@ -79,7 +79,7 @@ public class CustomCard extends View {
             mLogoString = a.getString(R.styleable.CustomCardView_logoLocation);
             mLogoDrawable = a.getDrawable(R.styleable.CustomCardView_logoDrawable);
 
-            bgColor = a.getColor(R.styleable.CustomCardView_bgColor, Color.parseColor("#FFFBA8"));
+            bgColor = a.getColor(R.styleable.CustomCardView_bgColor, Color.parseColor("#DFE2E6"));
         } finally {
             a.recycle();
         }
