@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/s2t2f4"
+        android:icon="@drawable/safe2tell_icon.png"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
